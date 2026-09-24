@@ -28,6 +28,7 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 ## Qué hay implementado
 
 ### Build / proyecto
+- Versión de la app: **1.1.0** (`versionCode 2`) — `app/build.gradle.kts`
 - Gradle 8.13 + **AGP 8.11.1** + Kotlin 2.0.20, `compileSdk`/`targetSdk` **36**, `minSdk` 24
 - Catálogo de versiones en `gradle/libs.versions.toml`; wrapper oficial incluido (`./gradlew`)
 - KSP + **Hilt** (DI) y **Room** (persistencia)
@@ -40,9 +41,9 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 - `HomeScreen`: "Crear PDF", "Escanear con cámara", "Historial" y **"Privacidad"** (abre la
   política en el navegador)
 - `EditorScreen`: Photo Picker (máx. 50), lista con miniaturas (Coil), **rotar**,
-  **eliminar** y **reordenar con drag & drop** (`sh.calvin.reorderable`); estado vacío con
-  "Elegir de la galería" / "Hacer una foto"; FAB "Añadir más fotos" con menú
-  **galería / cámara** y botón "Continuar"
+  **eliminar** y **reordenar con drag & drop** (`sh.calvin.reorderable`); **tocar una foto
+  abre una vista previa a pantalla completa**; estado vacío con "Elegir de la galería" /
+  "Hacer una foto"; FAB "Añadir más fotos" con menú **galería / cámara** y botón "Continuar"
 - `ConfigScreen`: nombre de archivo, chips de tamaño de página, orientación, márgenes y
   calidad; botón "Generar PDF"
 - `GeneratingScreen`: `CircularProgressIndicator`, "Procesando imagen X de Y", cancelar y
@@ -181,6 +182,9 @@ Minors diferidos (no arreglados):
   (`PdfConfigResolver.targetDecodeDimension`) y se aplica un escalado exacto
   (`Bitmap.scaledDownTo`). Se eliminó `JpegConverter`. *(Validado por el usuario: el tamaño
   ya es correcto.)*
+- **No se distinguían los documentos en el editor (miniatura pequeña).** Añadida **vista
+  previa a pantalla completa** al tocar una foto (se cierra tocando la imagen o la X).
+  No es el RF10 (vista previa del **PDF**), que sigue pendiente.
 - **Las fotos salían giradas 90° en el PDF.** Causa: las fotos (cámara y muchas de galería)
   traen una etiqueta **EXIF de orientación** con los píxeles "sin enderezar". Coil (miniatura
   del editor) aplica EXIF, pero el decoder del PDF no. Solución: se lee la orientación EXIF

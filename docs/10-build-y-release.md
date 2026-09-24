@@ -24,6 +24,11 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 # ... etc
 ```
 
+## Versión de la app
+
+En `app/build.gradle.kts`: `versionCode 2` / `versionName "1.1.0"`. Súbelos en cada envío a
+Play (el `versionCode` debe ser mayor que el de la versión publicada).
+
 ## Requisitos de Google Play (2026)
 
 - **targetSdk 36** obligatorio para apps nuevas y actualizaciones desde el **31-08-2026** (Android 16).

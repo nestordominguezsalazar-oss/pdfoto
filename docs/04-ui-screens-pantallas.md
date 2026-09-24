@@ -13,6 +13,8 @@
 - FAB **"Añadir más fotos"** → menú con **"Elegir de la galería"** y **"Hacer una foto"**
 - Estado vacío: "No hay fotos, añade algunas" + botones de galería y cámara
 - Botón **"Continuar"** (habilitado si hay ≥ 1 foto)
+- **Tocar una foto** abre una **vista previa a pantalla completa** (fondo negro, se cierra
+  tocando la imagen o la X). No incluye zoom ni swipe entre fotos.
 
 ## ConfigScreen
 - Nombre del archivo (TextField, por defecto `pdfoto_yyyyMMdd_HHmm`)

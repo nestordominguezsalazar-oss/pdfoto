@@ -18,6 +18,10 @@
 | RF13 | Historial de PDFs generados                            | Baja      |
 | RF14 | Nombre personalizado del archivo                       | Media     |
 
+> Nota: la **vista previa por foto** en el editor está implementada (tocar una foto). El
+> **RF10** se refiere a la vista previa del **PDF compuesto** antes de generarlo, que aún no
+> está implementada.
+
 ## No funcionales
 - **Rendimiento**: procesamiento en background con progreso visible
 - **Memoria**: no cargar bitmaps full-res; usar sampling
