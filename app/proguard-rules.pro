@@ -1,0 +1,2 @@
+-keep class coil.** { *; }
+-dontwarn okhttp3.**

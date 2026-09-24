@@ -1,0 +1,7 @@
+app/src/main/java/com/pdffoto/
+├── MainActivity.kt
+├── PdfotoApp.kt
+├── data/
+├── domain/
+├── ui/
+└── di/

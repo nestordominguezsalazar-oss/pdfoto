@@ -1,0 +1,15 @@
+pdffoto/
+├── README.md
+├── docs/
+│   ├── 00-overview.md
+│   ├── 01-requisitos.md
+│   ├── 02-arquitectura.md
+│   ├── 03-modelo-datos.md
+│   ├── 04-ui-screens.md
+│   ├── 05-camera-y-galeria.md
+│   ├── 06-generacion-pdf.md
+│   ├── 07-almacenamiento.md
+│   ├── 08-permisos.md
+│   ├── 09-testing.md
+│   ├── 10-build-y-release.md
+│   └── AGENTS.md

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PDFoto</string>
+    <string name="home_tagline">Turn your photos into PDF</string>
+
+    <!-- Actions -->
+    <string name="action_back">Back</string>
+    <string name="action_continue">Continue</string>
+    <string name="action_generate_pdf">Generate PDF</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_back_home">Back to home</string>
+
+    <!-- Home -->
+    <string name="home_create_pdf">Create PDF</string>
+    <string name="home_scan_camera">Scan with camera</string>
+    <string name="home_history">History</string>
+
+    <!-- Editor -->
+    <string name="editor_empty_message">No photos yet, add some</string>
+    <string name="editor_add_photos">Add more photos</string>
+    <string name="editor_add_first">Add photos</string>
+    <string name="editor_photo_index">Photo %1$d</string>
+    <string name="editor_photo_rotated">Rotated %1$d°</string>
+    <string name="editor_photo_description">Thumbnail of photo %1$d</string>
+    <string name="editor_rotate">Rotate 90°</string>
+    <string name="editor_delete">Delete photo</string>
+    <string name="editor_drag_handle">Reorder</string>
+
+    <!-- Screen titles -->
+    <string name="editor_title">Editor</string>
+    <string name="config_title">Settings</string>
+    <string name="generating_title">Generating PDF</string>
+    <string name="result_title">Result</string>
+    <string name="history_title">History</string>
+    <string name="camera_title">Camera</string>
+    <string name="camera_permission_message">To scan with the camera we need camera permission.</string>
+    <string name="camera_grant_permission">Grant permission</string>
+    <string name="camera_capture">Capture</string>
+    <string name="camera_capture_error">Couldn\'t capture the photo</string>
+
+    <!-- Settings -->
+    <string name="config_file_name">File name</string>
+    <string name="config_page_size">Page size</string>
+    <string name="config_orientation">Orientation</string>
+    <string name="config_margin">Margins</string>
+    <string name="config_quality">Quality</string>
+    <string name="page_size_a4">A4</string>
+    <string name="page_size_letter">Letter</string>
+    <string name="page_size_auto">Auto</string>
+    <string name="orientation_portrait">Portrait</string>
+    <string name="orientation_landscape">Landscape</string>
+    <string name="orientation_auto">Auto</string>
+    <string name="margin_none">None</string>
+    <string name="margin_small">Small</string>
+    <string name="margin_large">Large</string>
+    <string name="quality_low">Low</string>
+    <string name="quality_medium">Medium</string>
+    <string name="quality_high">High</string>
+
+    <!-- Generation -->
+    <string name="generating_preparing">Preparing…</string>
+    <string name="generating_progress">Processing image %1$d of %2$d</string>
+    <string name="generating_error">Couldn\'t generate the PDF</string>
+    <string name="action_retry">Retry</string>
+
+    <!-- Result -->
+    <string name="result_success">PDF generated</string>
+    <string name="result_details">%1$s · %2$s</string>
+    <string name="result_open">Open</string>
+    <string name="result_share">Share</string>
+    <plurals name="result_pages">
+        <item quantity="one">%1$d page</item>
+        <item quantity="other">%1$d pages</item>
+    </plurals>
+    <string name="result_no_viewer">No app available to open PDFs</string>
+    <string name="share_pdf_title">Share PDF</string>
+
+    <!-- History -->
+    <string name="history_empty">You haven\'t generated any PDF yet</string>
+    <string name="history_delete">Delete</string>
+    <string name="history_item_details">%1$s · %2$s · %3$s</string>
+</resources>

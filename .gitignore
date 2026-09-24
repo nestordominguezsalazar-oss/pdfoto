@@ -1,0 +1,17 @@
+*.iml
+.gradle/
+.kotlin/
+/local.properties
+/.idea/
+.DS_Store
+/build
+/app/build
+/captures
+.externalNativeBuild
+.cxx
+*.hprof
+
+# Firma: nunca versionar claves ni credenciales
+keystore.properties
+*.jks
+*.keystore

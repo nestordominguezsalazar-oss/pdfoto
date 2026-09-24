@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Variante oscura para evitar destello blanco al abrir la app en modo oscuro. -->
+    <style name="Theme.PDFoto" parent="android:Theme.Material.NoActionBar" />
+</resources>
