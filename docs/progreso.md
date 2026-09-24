@@ -28,7 +28,8 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 ## Qué hay implementado
 
 ### Build / proyecto
-- Versión de la app: **1.4.0** (`versionCode 5`) — `app/build.gradle.kts`
+- Versión de la app: **1.5.0** (`versionCode 6`) — `app/build.gradle.kts`
+- **Icono de app** real a partir de `docs/art/1.png` (adaptativo + mipmaps + `docs/store/icon-512.png`)
 - Gradle 8.13 + **AGP 8.11.1** + Kotlin 2.0.20, `compileSdk`/`targetSdk` **36**, `minSdk` 24
 - Catálogo de versiones en `gradle/libs.versions.toml`; wrapper oficial incluido (`./gradlew`)
 - KSP + **Hilt** (DI) y **Room** (persistencia)
@@ -41,7 +42,8 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 - `HomeScreen`: distintivos (**Sin publicidad · Sin marca de agua · 100 % offline · Sin
   recopilar datos · Gratis, sin compras**) y accesos "Crear PDF", "Escanear con cámara",
   "Historial" y "Acerca de"
-- `AboutScreen`: versión, lista de **ventajas**, privacidad y enviar comentarios
+- `AboutScreen`: versión, lista de **ventajas**, **correo de soporte** visible, **licencias de
+  código abierto**, privacidad y enviar comentarios
 - `EditorScreen`: Photo Picker (máx. 50), lista con miniaturas (Coil), **rotar**,
   **eliminar** y **reordenar con drag & drop** (`sh.calvin.reorderable`); **tocar una foto
   abre una vista previa a pantalla completa**; estado vacío con "Elegir de la galería" /

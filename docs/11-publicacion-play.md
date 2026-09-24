@@ -57,7 +57,8 @@ Play exige un enlace a la política **en la ficha** y **dentro de la app**.
 
 ## 5. Recursos de la ficha
 
-- [ ] **Icono** 512×512 PNG.
+- [x] **Icono** 512×512 PNG generado en [`store/icon-512.png`](./store/icon-512.png)
+      (fuente en `docs/art/`).
 - [ ] **Gráfico destacado** 1024×500 PNG/JPG.
 - [ ] **Capturas de teléfono** (mín. 2; recomendado 4-8) — se pueden hacer con un
       emulador de Android Studio.

@@ -13,6 +13,8 @@
 - Nombre de la app y **versión**
 - **Ventajas** (distintivos): sin publicidad, sin marca de agua, 100 % offline, sin recopilar
   datos, sin permisos de almacenamiento, gratis sin compras, español e inglés
+- **Soporte**: correo visible y seleccionable
+- **Licencias de código abierto** (AndroidX/Compose, Kotlin, Hilt, Room, Coil, CameraX, Reorderable)
 - **"Privacidad"** → abre la política en el navegador
 - **"Enviar comentarios"** → correo prerellenado con diagnósticos + log local
 

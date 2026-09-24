@@ -128,12 +128,12 @@ Turn photos into PDF with no ads and no connection. No watermark. Reorder, rotat
 
 **Español:**
 ```
-PDFoto 1.4.0 — Convierte fotos en PDF sin publicidad y sin marca de agua. Galería y cámara, vista previa de cada foto, reordenar/rotar/eliminar, tamaño de página, orientación, márgenes y calidad, guardado en Downloads, compartir e historial.
+PDFoto 1.5.0 — Convierte fotos en PDF sin publicidad y sin marca de agua. Galería y cámara, vista previa de cada foto, reordenar/rotar/eliminar, tamaño de página, orientación, márgenes y calidad, guardado en Downloads, compartir e historial.
 ```
 
 **English:**
 ```
-PDFoto 1.4.0 — Turn photos into PDF with no ads and no watermark. Gallery and camera, preview each photo, reorder/rotate/delete, page size, orientation, margins and quality, save to Downloads, share and history.
+PDFoto 1.5.0 — Turn photos into PDF with no ads and no watermark. Gallery and camera, preview each photo, reorder/rotate/delete, page size, orientation, margins and quality, save to Downloads, share and history.
 ```
 
 ---
