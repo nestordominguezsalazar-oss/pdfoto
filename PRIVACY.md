@@ -2,8 +2,8 @@
 
 Última actualización / Last updated: **23 de septiembre de 2026 / September 23, 2026**
 
-> ⚠️ **Antes de publicar**: sustituye los campos marcados como `[REQUERIDO]` por tus
-> datos reales (responsable y correo de contacto). Play exige un contacto válido.
+> Responsable y contacto ya rellenados. Publica esta política en una URL pública
+> (ver [`docs/11-publicacion-play.md`](docs/11-publicacion-play.md)).
 
 ---
 
@@ -52,8 +52,8 @@ Si esta política cambia, se actualizará la fecha de "última actualización" e
 página.
 
 ### Contacto
-- **Responsable**: `[REQUERIDO: tu nombre o el de tu organización]`
-- **Correo**: `[REQUERIDO: tu correo de contacto]`
+- **Responsable**: Nestor Alejandro Dominguez Salazar
+- **Correo**: nestordominguezsalazar@gmail.com
 
 ---
 
@@ -98,5 +98,5 @@ system's own folders on your device.
 If this policy changes, the "last updated" date on this page will be updated.
 
 ### Contact
-- **Controller**: `[REQUIRED: your name or organization]`
-- **Email**: `[REQUIRED: your contact email]`
+- **Controller**: Nestor Alejandro Dominguez Salazar
+- **Email**: nestordominguezsalazar@gmail.com

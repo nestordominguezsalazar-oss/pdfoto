@@ -38,7 +38,10 @@ fun HomeScreen(
             viewModel.startNewCreation()
             onCreatePdf()
         },
-        onOpenCamera = onOpenCamera,
+        onOpenCamera = {
+            viewModel.startNewCreation()
+            onOpenCamera()
+        },
         onOpenHistory = onOpenHistory,
         modifier = modifier,
     )

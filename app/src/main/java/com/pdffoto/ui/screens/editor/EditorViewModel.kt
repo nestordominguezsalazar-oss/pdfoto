@@ -1,27 +1,23 @@
 package com.pdffoto.ui.screens.editor
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.pdffoto.data.session.CreationSession
+import com.pdffoto.domain.model.Photo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 
 @HiltViewModel
 class EditorViewModel @Inject constructor(
     private val session: CreationSession,
 ) : ViewModel() {
 
-    val uiState: StateFlow<EditorUiState> = session.photos
-        .map { list -> if (list.isEmpty()) EditorUiState.Empty else EditorUiState.Content(list) }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS),
-            initialValue = EditorUiState.Empty,
-        )
+    /**
+     * Fotos actuales del documento. Se expone el flujo de la sesión **directamente**
+     * (sin `stateIn` con valor inicial) para que `value` sea siempre el estado real:
+     * el editor decide con él si debe abrir el selector de fotos.
+     */
+    val photos: StateFlow<List<Photo>> = session.photos
 
     /** Añade al final las fotos elegidas en el selector (URIs como texto). */
     fun onPhotosPicked(uris: List<String>) = session.addPhotos(uris)
@@ -34,8 +30,4 @@ class EditorViewModel @Inject constructor(
 
     /** Reordena moviendo la foto de [fromIndex] a [toIndex]. */
     fun onMove(fromIndex: Int, toIndex: Int) = session.move(fromIndex, toIndex)
-
-    private companion object {
-        const val STOP_TIMEOUT_MILLIS = 5_000L
-    }
 }

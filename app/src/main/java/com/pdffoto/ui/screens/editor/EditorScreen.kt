@@ -67,7 +67,7 @@ fun EditorScreen(
     modifier: Modifier = Modifier,
     viewModel: EditorViewModel = hiltViewModel(),
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val photos by viewModel.photos.collectAsStateWithLifecycle()
 
     val photoPicker = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickMultipleVisualMedia(MaxPhotos),
@@ -75,17 +75,17 @@ fun EditorScreen(
         viewModel.onPhotosPicked(uris.map(Uri::toString))
     }
 
-    // Al entrar sin fotos, abre el selector directamente (el botón "Crear PDF" de la
-    // pantalla de inicio lleva aquí). Si el usuario cancela, se muestra el estado vacío.
-    LaunchedEffect(Unit) {
-        if (viewModel.uiState.value is EditorUiState.Empty) {
-            photoPicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-        }
-    }
-
     val launchPicker = {
         photoPicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         Unit
+    }
+
+    // Solo se abre el selector al entrar si el documento está vacío (p. ej. tras
+    // "Crear PDF"). Si ya hay fotos —por ejemplo una captura de cámara— no se abre.
+    LaunchedEffect(Unit) {
+        if (viewModel.photos.value.isEmpty()) {
+            launchPicker()
+        }
     }
 
     Scaffold(
@@ -114,7 +114,7 @@ fun EditorScreen(
             Surface(tonalElevation = 3.dp) {
                 Button(
                     onClick = onContinue,
-                    enabled = uiState is EditorUiState.Content,
+                    enabled = photos.isNotEmpty(),
                     modifier = Modifier
                         .fillMaxWidth()
                         .navigationBarsPadding()
@@ -125,17 +125,17 @@ fun EditorScreen(
             }
         },
     ) { innerPadding ->
-        when (val state = uiState) {
-            EditorUiState.Empty -> EmptyEditor(
+        if (photos.isEmpty()) {
+            EmptyEditor(
                 onAddPhotos = launchPicker,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding)
                     .padding(24.dp),
             )
-
-            is EditorUiState.Content -> PhotoList(
-                photos = state.photos,
+        } else {
+            PhotoList(
+                photos = photos,
                 onRotate = viewModel::onRotate,
                 onDelete = viewModel::onDelete,
                 onMove = viewModel::onMove,

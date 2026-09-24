@@ -177,6 +177,17 @@ Minors diferidos (no arreglados en esta pasada):
 - M11 `formatTimestamp` en hora local vs `defaultPdfFileName` en UTC.
 - M12 sin tests (requieren instrumentados) para decoder/storage/generador/dibujo.
 
+## Correcciones tras pruebas manuales (2026-09-23)
+
+- **La sesión no se reiniciaba al empezar por cámara.** El botón "Escanear con cámara"
+  ahora llama a `startNewCreation()` (antes solo "Crear PDF" limpiaba la sesión), así que
+  cada PDF empieza de cero y no se añaden fotos al documento anterior.
+- **El editor abría el selector de galería aunque ya hubiera una foto.** `EditorViewModel`
+  exponía `stateIn(initialValue = Empty)`; al entrar tras una captura, el `value` inicial
+  era `Empty` y lanzaba el Photo Picker. Ahora expone `session.photos` directamente, de
+  modo que `value` es siempre el estado real.
+- Tests añadidos: `EditorViewModelTest` y `HomeViewModelTest` (46/46 en total).
+
 ## Pendiente para publicar en Google Play
 
 1. Terminar la app (pasos 6-15).
