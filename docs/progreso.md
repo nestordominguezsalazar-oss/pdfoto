@@ -28,7 +28,7 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 ## Qué hay implementado
 
 ### Build / proyecto
-- Versión de la app: **1.1.0** (`versionCode 2`) — `app/build.gradle.kts`
+- Versión de la app: **1.2.0** (`versionCode 3`) — `app/build.gradle.kts`
 - Gradle 8.13 + **AGP 8.11.1** + Kotlin 2.0.20, `compileSdk`/`targetSdk` **36**, `minSdk` 24
 - Catálogo de versiones en `gradle/libs.versions.toml`; wrapper oficial incluido (`./gradlew`)
 - KSP + **Hilt** (DI) y **Room** (persistencia)
@@ -88,6 +88,15 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 - Cada PDF generado se persiste (`PdfHistoryRepository.add`); `HistoryViewModel` observa el
   repositorio.
 
+### Soporte y feedback (ver `docs/13`)
+- **Log local** (`data/logging`): `AppLogger` + `FileLogger` (bucle de 500 líneas en
+  `cacheDir`, sin red). Registra cierres no controlados, errores de generación/guardado y de
+  captura.
+- **"Enviar comentarios"** en Inicio: abre el correo prerellenado con diagnósticos técnicos
+  (versión, Android, dispositivo) y adjunta el log (FileProvider). **Nada se envía salvo que
+  el usuario lo mande.**
+- Errores automáticos: **Android vitals** de Play (sin SDK ni permisos).
+
 ### Release
 - Firma leída de `keystore.properties` (no versionado; partir de
   `keystore.properties.example`). Sin ese archivo, el release se compila sin firmar.
@@ -117,7 +126,7 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 | Check | Resultado |
 |-------|-----------|
 | `./gradlew assembleDebug` | ✅ APK debug |
-| `./gradlew testDebugUnitTest` | ✅ 54/54 tests |
+| `./gradlew testDebugUnitTest` | ✅ 59/59 tests |
 | `./gradlew lintDebug` | ✅ 0 errores (28 avisos, todos "hay versión más nueva") |
 | `./gradlew bundleRelease` | ✅ `app-release.aab` ≈ 4.7 MB (firma verificada) |
 

@@ -38,5 +38,6 @@ guardado en Downloads, abrir/compartir e historial). Detalle y verificación en
 - Estado del desarrollo en [`docs/progreso.md`](./docs/progreso.md).
 - Publicación en Play en [`docs/11-publicacion-play.md`](./docs/11-publicacion-play.md).
 - Textos de la ficha en [`docs/12-textos-ficha-play.md`](./docs/12-textos-ficha-play.md).
+- Errores y comentarios en [`docs/13-feedback-y-soporte.md`](./docs/13-feedback-y-soporte.md).
 - Política de privacidad en [`PRIVACY.md`](./PRIVACY.md).
 - Instrucciones de trabajo para agentes en [`AGENTS.md`](./AGENTS.md).

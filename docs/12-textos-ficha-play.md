@@ -126,12 +126,12 @@ Turn photos into PDF with no ads and no connection. Reorder, rotate and set page
 
 **Español:**
 ```
-PDFoto 1.1.0 — Convierte fotos en PDF sin publicidad. Galería y cámara, vista previa de cada foto, reordenar/rotar/eliminar, tamaño de página, orientación, márgenes y calidad, guardado en Downloads, compartir e historial.
+PDFoto 1.2.0 — Convierte fotos en PDF sin publicidad. Galería y cámara, vista previa de cada foto, reordenar/rotar/eliminar, tamaño de página, orientación, márgenes y calidad, guardado en Downloads, compartir e historial.
 ```
 
 **English:**
 ```
-PDFoto 1.1.0 — Turn photos into PDF with no ads. Gallery and camera, preview each photo, reorder/rotate/delete, page size, orientation, margins and quality, save to Downloads, share and history.
+PDFoto 1.2.0 — Turn photos into PDF with no ads. Gallery and camera, preview each photo, reorder/rotate/delete, page size, orientation, margins and quality, save to Downloads, share and history.
 ```
 
 ---

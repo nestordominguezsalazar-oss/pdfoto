@@ -35,6 +35,12 @@ incluye publicidad, analítica ni SDKs de seguimiento.
 ### Terceros
 No compartimos datos con terceros. No hay anuncios, ni analítica, ni rastreadores.
 
+### Comentarios y soporte
+Si usas el botón **"Enviar comentarios"**, se abre tu aplicación de correo con datos técnicos
+(versión de la app, versión de Android y modelo del dispositivo) y, si existe, un **archivo de
+registro local** de la app. **Nada se envía automáticamente**: el correo lo mandas tú y decides
+si adjuntar el registro. La app no realiza ninguna conexión de red.
+
 ### Menores
 La app no está dirigida a menores de edad ni recopila datos de menores.
 
@@ -82,6 +88,12 @@ tracking SDKs.
 
 ### Third parties
 We do not share data with third parties. There are no ads, analytics or trackers.
+
+### Feedback and support
+If you use the **"Send feedback"** button, your email app opens with technical details (app
+version, Android version and device model) and, if present, a **local log file** from the app.
+**Nothing is sent automatically**: you send the email and decide whether to attach the log.
+The app makes no network connection.
 
 ### Children
 The app is not directed to children and does not collect data from children.
