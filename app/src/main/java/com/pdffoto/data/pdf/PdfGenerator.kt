@@ -39,7 +39,11 @@ class PdfGenerator @Inject constructor(
                         rotationDegrees = photo.rotationDegrees,
                     ) ?: return@forEachIndexed
 
-                    val dimensions = PdfConfigResolver.resolve(config, bitmap.width, bitmap.height)
+                    // Aplica la calidad elegida recomprimiendo el bitmap como JPEG.
+                    val pageBitmap = recompressAsJpeg(bitmap, config.quality.jpeg)
+                    if (pageBitmap !== bitmap) bitmap.recycle()
+
+                    val dimensions = PdfConfigResolver.resolve(config, pageBitmap.width, pageBitmap.height)
                     val pageInfo = PdfDocument.PageInfo
                         .Builder(dimensions.widthPt, dimensions.heightPt, index + 1)
                         .create()
@@ -47,14 +51,14 @@ class PdfGenerator @Inject constructor(
 
                     drawBitmapFitted(
                         canvas = page.canvas,
-                        bitmap = bitmap,
+                        bitmap = pageBitmap,
                         pageWidth = dimensions.widthPt,
                         pageHeight = dimensions.heightPt,
                         marginPx = config.margin.dp,
                     )
 
                     document.finishPage(page)
-                    bitmap.recycle()
+                    pageBitmap.recycle()
                 }
 
                 outputFile.outputStream().use { document.writeTo(it) }

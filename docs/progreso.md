@@ -143,6 +143,40 @@ export ANDROID_HOME=/ruta/a/android-sdk   # necesita platforms;android-36
 ./gradlew assembleDebug testDebugUnitTest lintDebug
 ```
 
+## Revisión de código (2026-09-23)
+
+Revisor independiente sobre el commit inicial. Fix pass aplicado:
+
+- ✅ **I1 (Important)**: la cámara quedaba **enlazada al salir** de `CameraScreen`.
+  `CameraPreview` ahora la desvincula con `DisposableEffect`.
+- ✅ **I2 (Important)**: la opción **"Calidad" no tenía efecto**. `PdfGenerator` ahora
+  recomprime el bitmap con `quality.jpeg` (`data/pdf/JpegConverter.kt`).
+
+Rulings (comportamiento sin cambios):
+
+- **C1 (Critical, rechazado)**: se afirmaba que `file://` no funciona con
+  `ContentResolver.openInputStream`. Verificado en AOSP: `openInputStream` trata
+  `SCHEME_FILE` con `new FileInputStream(uri.getPath())`. La cámara funciona; sin cambios.
+- **I3 (rechazado, sigue el spec)**: en `PageSize.AUTO` la página usa las dimensiones del
+  bitmap, tal como define `docs/06` y fija su test.
+- **I4 (degradado a Minor)**: `MarginSize.dp` se usa como puntos del PDF; el spec lo
+  define como `dp`.
+
+Minors diferidos (no arreglados en esta pasada):
+
+- M1 `HistoryViewModel` usa `SharingStarted.Eagerly` (mejor `WhileSubscribed`).
+- M2 una foto que no decodifica se omite en silencio en `PdfGenerator`.
+- M3 cancelar no borra el PDF parcial en `cacheDir`.
+- M4 Room `exportSchema = false` (útil para migraciones futuras).
+- M5 `allowBackup="true"` sin `dataExtractionRules`.
+- M6 `suspendCancellableCoroutine` sin `invokeOnCancellation` (captura/cámara).
+- M7 el flujo de cámara no limpia la sesión (solo "Crear PDF" llama a `clear()`).
+- M8 `FileNameSanitizer` no cubre puntos iniciales/finales ni nombres reservados.
+- M9 el progreso se emite antes de decodificar (barra ligeramente adelantada).
+- M10 eliminar del historial no borra el archivo del PDF.
+- M11 `formatTimestamp` en hora local vs `defaultPdfFileName` en UTC.
+- M12 sin tests (requieren instrumentados) para decoder/storage/generador/dibujo.
+
 ## Pendiente para publicar en Google Play
 
 1. Terminar la app (pasos 6-15).
