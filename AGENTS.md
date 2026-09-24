@@ -124,6 +124,8 @@ build(release): configurar firma y minificado del APK
 .
 ├── AGENTS.md
 ├── README.md
+├── PRIVACY.md                    # política de privacidad (es/en)
+├── privacy.html                  # misma política para publicar (GitHub Pages)
 ├── settings.gradle.kts
 ├── build.gradle.kts
 ├── gradle.properties
@@ -131,41 +133,51 @@ build(release): configurar firma y minificado del APK
 ├── gradle/
 │   ├── libs.versions.toml        # catálogo de versiones
 │   └── snippets/                 # fragmentos de configuración Gradle (referencia)
-├── snippets/kotlin/              # fragmentos de código Kotlin (referencia; pasos 3-12)
-├── docs/                         # especificación — leer en orden numérico
+├── snippets/kotlin/              # fragmentos de código Kotlin (referencia)
+├── docs/                         # especificación, progreso y publicación
 ├── scripts/build-release.sh      # build del bundle de release
 ├── .github/workflows/android-ci.yml
 └── app/
     ├── build.gradle.kts
     ├── proguard-rules.pro
-    └── src/main/
-        ├── AndroidManifest.xml
-        ├── java/com/pdffoto/
-        │   ├── MainActivity.kt
-        │   ├── PdfotoApp.kt      # Application (@HiltAndroidApp)
-        │   ├── data/
-        │   │   ├── local/        # Room: entity, DAO, base de datos, mapper
-        │   │   ├── pdf/          # PdfGenerator y utilidades de bitmap
-        │   │   ├── repository/   # implementaciones de repositorios
-        │   │   ├── session/      # CreationSession (estado del flujo)
-        │   │   └── storage/      # guardado en Downloads (MediaStore/FileProvider)
-        │   ├── di/               # módulos de Hilt
-        │   ├── domain/
-        │   │   ├── model/        # entidades puras (sin Android)
-        │   │   ├── pdf/          # páginas, nombres de archivo, sampling
-        │   │   ├── photo/        # operaciones puras sobre fotos
-        │   │   └── repository/   # interfaces de repositorio
-        │   └── ui/
-        │       ├── PdfotoRoot.kt # raíz: tema + NavHost
-        │       ├── navigation/
-        │       ├── screens/
-        │       ├── components/
-        │       ├── util/         # intents (abrir/compartir PDF)
-        │       └── theme/
-        └── res/                  # strings, temas, iconos
+    └── src/
+        ├── main/
+        │   ├── AndroidManifest.xml
+        │   ├── java/com/pdffoto/
+        │   │   ├── MainActivity.kt
+        │   │   ├── PdfotoApp.kt      # Application (@HiltAndroidApp)
+        │   │   ├── data/
+        │   │   │   ├── local/        # Room: entity, DAO, base de datos, mapper
+        │   │   │   ├── logging/      # log local (sin red) para comentarios
+        │   │   │   ├── pdf/          # PdfGenerator y utilidades de bitmap
+        │   │   │   ├── repository/   # implementaciones de repositorios
+        │   │   │   ├── session/      # CreationSession (estado del flujo)
+        │   │   │   └── storage/      # guardado en Downloads (MediaStore/FileProvider)
+        │   │   ├── di/               # módulos de Hilt
+        │   │   ├── domain/
+        │   │   │   ├── model/        # entidades puras (sin Android)
+        │   │   │   ├── pdf/          # páginas, nombres, sampling, formatos
+        │   │   │   ├── photo/        # operaciones puras sobre fotos y EXIF
+        │   │   │   ├── repository/   # interfaces de repositorio
+        │   │   │   └── support/      # diagnósticos de feedback
+        │   │   └── ui/
+        │   │       ├── PdfotoRoot.kt # raíz: tema + NavHost
+        │   │       ├── navigation/
+        │   │       ├── screens/      # home, editor, config, generating, result, history, camera, about
+        │   │       ├── components/   # composables reutilizables
+        │   │       ├── util/         # intents (abrir/compartir/URL)
+        │   │       └── theme/
+        │   └── res/                  # strings, temas, iconos
+        └── test/                     # tests unitarios (JVM)
 ```
 
-> **Nota:** el proyecto es un esqueleto Android compilable verificado
-> (`./gradlew assembleDebug` OK con Gradle 8.13 + AGP 8.11.1, `targetSdk 36`).
-> Los fragmentos de código sin `package`/`import` viven en `snippets/kotlin/`
-> (fuera del source set) y se integrarán en sus pasos correspondientes.
+> **Nota:** el proyecto está **completo** (los 15 pasos del plan): app funcional y verificada
+> (build + 59 tests + lint OK; Gradle 8.13 + AGP 8.11.1, `targetSdk 36`). Estado y decisiones
+> en [`docs/progreso.md`](./docs/progreso.md). Los fragmentos de `snippets/kotlin/` y
+> `gradle/snippets/` se conservan como referencia.
+
+Documentos adicionales: [`02-arquitectura-convenciones`](./docs/02-arquitectura-convenciones.md),
+[`04-ui-screens-pantallas`](./docs/04-ui-screens-pantallas.md),
+[`estructura-proyecto.txt`](./docs/estructura-proyecto.txt),
+[`estructura-paquetes.txt`](./docs/estructura-paquetes.txt) y
+[`guia-uso-opencode`](./docs/guia-uso-opencode.md).
