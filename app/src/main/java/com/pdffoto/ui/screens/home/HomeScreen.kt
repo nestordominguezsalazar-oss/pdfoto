@@ -11,40 +11,32 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.pdffoto.R
+import com.pdffoto.ui.components.FeatureBadge
 import com.pdffoto.ui.theme.PDFotoTheme
-import com.pdffoto.ui.util.openUrl
-import com.pdffoto.ui.util.sendFeedback
 
 /**
- * Pantalla de inicio: crear un PDF, escanear, ver el historial, la política de privacidad o
- * enviar comentarios.
+ * Pantalla de inicio: crear un PDF, escanear, ver el historial o abrir "Acerca de".
  */
 @Composable
 fun HomeScreen(
     onCreatePdf: () -> Unit,
     onOpenCamera: () -> Unit,
     onOpenHistory: () -> Unit,
+    onOpenAbout: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
-    val context = LocalContext.current
-    val privacyUrl = stringResource(R.string.privacy_policy_url)
-    val supportEmail = stringResource(R.string.support_email)
-    val feedbackSubject = stringResource(R.string.feedback_subject)
-
     HomeContent(
         onCreatePdf = {
             viewModel.startNewCreation()
@@ -55,16 +47,7 @@ fun HomeScreen(
             onOpenCamera()
         },
         onOpenHistory = onOpenHistory,
-        onOpenPrivacy = { openUrl(context, privacyUrl) },
-        onSendFeedback = {
-            sendFeedback(
-                context = context,
-                email = supportEmail,
-                subject = feedbackSubject,
-                body = viewModel.feedbackDiagnostics(),
-                attachment = viewModel.feedbackLogFile(),
-            )
-        },
+        onOpenAbout = onOpenAbout,
         modifier = modifier,
     )
 }
@@ -75,8 +58,7 @@ private fun HomeContent(
     onCreatePdf: () -> Unit,
     onOpenCamera: () -> Unit,
     onOpenHistory: () -> Unit,
-    onOpenPrivacy: () -> Unit,
-    onSendFeedback: () -> Unit,
+    onOpenAbout: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(modifier = modifier.fillMaxSize()) { innerPadding ->
@@ -108,6 +90,7 @@ private fun HomeContent(
                 FeatureBadge(stringResource(R.string.home_badge_no_watermark))
                 FeatureBadge(stringResource(R.string.home_badge_offline))
                 FeatureBadge(stringResource(R.string.home_badge_private))
+                FeatureBadge(stringResource(R.string.home_badge_free))
             }
 
             Button(
@@ -130,29 +113,10 @@ private fun HomeContent(
                 Text(text = stringResource(R.string.home_history))
             }
 
-            TextButton(onClick = onOpenPrivacy) {
-                Text(text = stringResource(R.string.home_privacy))
-            }
-
-            TextButton(onClick = onSendFeedback) {
-                Text(text = stringResource(R.string.home_feedback))
+            TextButton(onClick = onOpenAbout) {
+                Text(text = stringResource(R.string.about_title))
             }
         }
-    }
-}
-
-@Composable
-private fun FeatureBadge(text: String) {
-    Surface(
-        shape = MaterialTheme.shapes.small,
-        color = MaterialTheme.colorScheme.secondaryContainer,
-        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-    ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.labelMedium,
-            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
-        )
     }
 }
 
@@ -164,8 +128,7 @@ private fun HomeContentPreview() {
             onCreatePdf = {},
             onOpenCamera = {},
             onOpenHistory = {},
-            onOpenPrivacy = {},
-            onSendFeedback = {},
+            onOpenAbout = {},
         )
     }
 }

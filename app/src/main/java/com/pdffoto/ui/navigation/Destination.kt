@@ -36,4 +36,8 @@ sealed interface Destination {
     data object Camera : Destination {
         override val route: String = "camera"
     }
+
+    data object About : Destination {
+        override val route: String = "about"
+    }
 }

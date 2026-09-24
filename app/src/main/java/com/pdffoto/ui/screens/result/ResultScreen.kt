@@ -32,6 +32,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.pdffoto.R
 import com.pdffoto.domain.pdf.formatFileSize
+import com.pdffoto.ui.components.FeatureBadge
 import com.pdffoto.ui.util.openPdf
 import com.pdffoto.ui.util.sharePdf
 
@@ -100,6 +101,7 @@ fun ResultScreen(
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
+                FeatureBadge(text = stringResource(R.string.result_no_watermark))
                 Button(
                     onClick = {
                         if (!openPdf(context, pdf.uri)) {

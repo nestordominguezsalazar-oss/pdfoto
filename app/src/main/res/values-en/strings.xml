@@ -6,6 +6,7 @@
     <string name="home_badge_no_watermark">No watermark</string>
     <string name="home_badge_offline" formatted="false">100% offline</string>
     <string name="home_badge_private">No data collected</string>
+    <string name="home_badge_free">Free, no purchases</string>
 
     <!-- Actions -->
     <string name="action_back">Back</string>
@@ -20,6 +21,13 @@
     <string name="home_history">History</string>
     <string name="home_privacy">Privacy</string>
     <string name="home_feedback">Send feedback</string>
+
+    <!-- About -->
+    <string name="about_title">About</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_advantages_title">Highlights</string>
+    <string name="about_adv_no_storage">No storage permissions</string>
+    <string name="about_adv_languages">Spanish and English</string>
     <string name="feedback_subject">Feedback about PDFoto</string>
 
     <!-- Editor -->
@@ -78,6 +86,7 @@
     <string name="result_details">%1$s · %2$s</string>
     <string name="result_open">Open</string>
     <string name="result_share">Share</string>
+    <string name="result_no_watermark">No watermark</string>
     <plurals name="result_pages">
         <item quantity="one">%1$d page</item>
         <item quantity="other">%1$d pages</item>

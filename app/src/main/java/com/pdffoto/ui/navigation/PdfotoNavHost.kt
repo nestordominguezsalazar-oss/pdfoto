@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.pdffoto.ui.screens.about.AboutScreen
 import com.pdffoto.ui.screens.camera.CameraScreen
 import com.pdffoto.ui.screens.config.ConfigScreen
 import com.pdffoto.ui.screens.editor.EditorScreen
@@ -34,6 +35,7 @@ fun PdfotoNavHost(
                 onCreatePdf = { navController.navigate(Destination.Editor.route) },
                 onOpenCamera = { navController.navigate(Destination.Camera.route) },
                 onOpenHistory = { navController.navigate(Destination.History.route) },
+                onOpenAbout = { navController.navigate(Destination.About.route) },
             )
         }
 
@@ -86,6 +88,10 @@ fun PdfotoNavHost(
                     }
                 },
             )
+        }
+
+        composable(Destination.About.route) {
+            AboutScreen(onBack = { navController.popBackStack() })
         }
     }
 }
