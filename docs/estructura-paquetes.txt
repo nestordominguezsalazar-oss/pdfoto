@@ -1,7 +1,22 @@
 app/src/main/java/com/pdffoto/
 ├── MainActivity.kt
-├── PdfotoApp.kt
+├── PdfotoApp.kt                 # Application (@HiltAndroidApp)
 ├── data/
+│   ├── local/                   # Room: entity, DAO, base de datos, mapper
+│   ├── pdf/                     # PdfGenerator, decoder, dibujo, escalado
+│   ├── repository/              # implementaciones de repositorios
+│   ├── session/                 # CreationSession (estado del flujo)
+│   └── storage/                 # guardado en Downloads (MediaStore/FileProvider)
+├── di/                          # módulos de Hilt
 ├── domain/
-├── ui/
-└── di/
+│   ├── model/                   # entidades puras (sin Android)
+│   ├── pdf/                     # páginas, nombres, sampling, formatos
+│   ├── photo/                   # operaciones puras sobre fotos
+│   └── repository/              # interfaces de repositorio
+└── ui/
+    ├── PdfotoRoot.kt            # raíz: tema + NavHost
+    ├── navigation/
+    ├── screens/                 # una carpeta por pantalla
+    ├── components/              # composables reutilizables
+    ├── util/                    # intents (abrir/compartir/URL)
+    └── theme/                   # tema Material 3

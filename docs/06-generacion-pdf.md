@@ -1,70 +1,46 @@
-
----
-
-## 📄 `docs/06-generacion-pdf.md`
-
-```markdown
 # 06 - Generación del PDF
 
 ## Estrategia
 Usar `android.graphics.pdf.PdfDocument` nativo (sin librerías externas).
 
-## Cálculo de tamaño de página
-
-### Tamaños en puntos (1 pt = 1/72 in)
+## Tamaño de página (puntos, 1 pt = 1/72 in)
 - A4: 595 x 842
 - Carta: 612 x 792
+- AUTO: dimensiones del bitmap
 
-### Modo AUTO
-Cada página usa las dimensiones del bitmap (escaladas a 72 dpi como referencia).
+La orientación (vertical / horizontal) ajusta el tamaño base; AUTO la deduce del bitmap.
+Implementado en `domain/pdf/PdfConfigResolver.resolve`.
 
-### Modo PORTRAIT / LANDSCAPE
-Fijar tamaño base y escalar la imagen con `Matrix` para encajar manteniendo aspect ratio (letterbox).
+## Peso del archivo
+`PdfDocument` (backend PDF de Skia) incrusta las imágenes **a la resolución del bitmap** y su
+codificación por defecto es **sin pérdida**. Por eso el peso depende casi por completo de los
+**píxeles** incrustados, no de una "calidad JPEG" (que Skia vuelve a codificar).
+
+Por eso la **calidad se expresa como DPI objetivo** y fija el lado mayor al que se decodifica:
+
+| Calidad | DPI | Alto en A4 |
+|---------|-----|------------|
+| Baja    | 96  | ~1123 px |
+| Media   | 150 | ~1754 px |
+| Alta    | 200 | ~2339 px |
+
+`PdfConfigResolver.targetDecodeDimension(pageSize, quality)` calcula el objetivo. El bitmap se
+decodifica con sampling (`calculateInSampleSize`) y se ajusta al objetivo con
+`Bitmap.scaledDownTo`.
+
+> Nota: los valores de DPI son un punto de partida razonable; conviene **medir en dispositivo**
+> el peso resultante y ajustarlos si hace falta.
 
 ## Pipeline
 
-```kotlin
-class PdfGenerator(
-    private val context: Context,
-    private val imageLoader: ImageLoader // o decoder propio
-) {
-    suspend fun generate(
-        photos: List<Photo>,
-        config: PdfConfig,
-        outputFile: File,
-        onProgress: (Int, Int) -> Unit
-    ): Result<Unit> = withContext(Dispatchers.IO) {
-        runCatching {
-            val doc = PdfDocument()
-            photos.sortedBy { it.order }.forEachIndexed { idx, photo ->
-                onProgress(idx + 1, photos.size)
+`data/pdf/PdfGenerator` (implementa `PdfGeneratorService`):
 
-                val bitmap = decodeSampledBitmap(
-                    context, photo.uri,
-                    maxDim = config.pageSize.maxDim(),
-                    rotation = photo.rotationDegrees
-                ) ?: return@forEachIndexed
+1. `decodeSampledBitmap(context, uri, targetDimension, rotationDegrees)` → bitmap muestreado y
+   rotado.
+2. `bitmap.scaledDownTo(targetDimension)` → tamaño exacto.
+3. `PdfConfigResolver.resolve(config, bitmap.width, bitmap.height)` → tamaño de página.
+4. `drawBitmapFitted(canvas, bitmap, pageW, pageH, marginPx)` → letterbox centrado + margen.
+5. `document.writeTo(outputFile)`.
 
-                val (pageW, pageH) = resolvePageSize(config, bitmap)
-
-                val pageInfo = PdfDocument.PageInfo
-                    .Builder(pageW, pageH, idx + 1).create()
-                val page = doc.startPage(pageInfo)
-
-                drawBitmapFitted(
-                    canvas = page.canvas,
-                    bitmap = bitmap,
-                    pageW = pageW,
-                    pageH = pageH,
-                    marginPx = config.margin.dp
-                )
-
-                doc.finishPage(page)
-                bitmap.recycle()
-            }
-
-            outputFile.outputStream().use { doc.writeTo(it) }
-            doc.close()
-        }
-    }
-}
+Se ejecuta en `Dispatchers.IO` y reporta progreso 1-based. `GenerationViewModel` lo orquesta
+(con cancelación) y `AndroidPdfStorage` guarda el resultado en Downloads.

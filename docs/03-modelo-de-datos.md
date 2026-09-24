@@ -17,7 +17,7 @@ data class Photo(
 enum class PageSize { A4, LETTER, AUTO }
 enum class Orientation { PORTRAIT, LANDSCAPE, AUTO }
 enum class MarginSize(val dp: Int) { NONE(0), SMALL(24), LARGE(48) }
-enum class Quality(val jpeg: Int) { LOW(60), MEDIUM(80), HIGH(95) }
+enum class Quality(val dpi: Int) { LOW(96), MEDIUM(150), HIGH(200) }
 
 data class PdfConfig(
     val pageSize: PageSize = PageSize.AUTO,

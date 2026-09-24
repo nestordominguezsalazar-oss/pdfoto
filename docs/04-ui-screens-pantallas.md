@@ -1,44 +1,36 @@
+# 04 (bis) - Detalle de pantallas
 
 ## HomeScreen
-- Título "PDFoto"
-- Botón principal "Crear PDF" → abre Photo Picker
-- Botón secundario "Escanear con cámara" → CameraScreen
-- Acceso a "Historial"
-- Última config usada como chip informativo
+- Título "PDFoto" y tagline
+- **"Crear PDF"** → inicia un documento nuevo y abre el Photo Picker
+- **"Escanear con cámara"** → inicia un documento nuevo y abre `CameraScreen`
+- **"Historial"** → `HistoryScreen`
+- **"Privacidad"** → abre la política en el navegador
 
 ## EditorScreen
-- `LazyColumn` con tarjetas de imagen
-- Cada tarjeta: thumbnail, índice, botones (rotar, borrar), handle drag
-- Botón flotante "Añadir más fotos"
-- Botón "Continuar" (habilitado si ≥1 foto)
-- Estado vacío: "No hay fotos, añade algunas"
+- `LazyColumn` de tarjetas: miniatura, índice, grados de rotación, botones **rotar** y
+  **eliminar**, y **handle de arrastre**
+- FAB **"Añadir más fotos"** → menú con **"Elegir de la galería"** y **"Hacer una foto"**
+- Estado vacío: "No hay fotos, añade algunas" + botones de galería y cámara
+- Botón **"Continuar"** (habilitado si hay ≥ 1 foto)
 
 ## ConfigScreen
-- Nombre del archivo (TextField, default `pdfoto_yyyyMMdd_HHmm`)
-- Selector tamaño de página (chips o dropdown)
-- Selector orientación
-- Selector márgenes
-- Selector calidad
-- Botón "Generar PDF"
+- Nombre del archivo (TextField, por defecto `pdfoto_yyyyMMdd_HHmm`)
+- Chips: tamaño de página, orientación, márgenes y calidad (dpi)
+- Botón **"Generar PDF"**
 
 ## GeneratingScreen
-- CircularProgressIndicator
-- Texto "Procesando imagen 3 de 10..."
-- Botón "Cancelar"
+- `CircularProgressIndicator` y "Procesando imagen X de Y"
+- Botón **"Cancelar"**; si falla, **"Reintentar"**
 
 ## ResultScreen
-- Ícono de éxito
-- Nombre y tamaño del PDF
-- Botón "Abrir"
-- Botón "Compartir"
-- Botón "Volver al inicio"
+- Icono de éxito, nombre del archivo y "N páginas · tamaño"
+- Botones **"Abrir"**, **"Compartir"** y **"Volver al inicio"**
 
 ## HistoryScreen
-- Lista de PDFs con nombre, fecha, páginas, tamaño
-- Swipe para eliminar
-- Click para abrir o compartir
+- Lista con nombre, fecha, páginas y tamaño
+- **Swipe para eliminar**; toque para abrir; botón para compartir
 
 ## Componentes reutilizables
-- `PhotoCard(photo, onRotate, onDelete, onDrag)`
-- `ConfigChipRow(options, selected, onSelect)`
-- `PrimaryButton(text, onClick, enabled)`
+- `ConfigChipRow(title, options, selected, label, onSelect)`
+- `PhotoCard` (privada de `EditorScreen`)

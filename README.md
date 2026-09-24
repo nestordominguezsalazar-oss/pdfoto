@@ -17,7 +17,7 @@ App Android nativa para convertir fotos en archivos PDF.
 - Android Studio Ladybug o superior
 - JDK 17
 - Android SDK 36 (target) / minSdk 24
-- Gradle 8.7+
+- Gradle 8.13+
 
 ## Build rápido
 ```bash

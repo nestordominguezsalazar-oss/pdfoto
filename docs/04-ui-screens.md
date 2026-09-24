@@ -3,7 +3,7 @@
 ## Navegación
 
 Implementada con **Navigation Compose** en `com.pdffoto.ui.navigation`
-(`Destination` + `PdfotoNavHost`). El tema y el grafo se montan en `PdfotoApp`.
+(`Destination` + `PdfotoNavHost`). El tema y el grafo se montan en `PdfotoRoot`.
 
 | Ruta | Pantalla | Estado |
 |------|----------|--------|
@@ -24,6 +24,7 @@ home ──▶ editor ──▶ config ──▶ generating ──▶ result
                                             home
 ```
 
-Accesos laterales desde `home`: `history` y `camera`.
+Accesos laterales desde `home`: `history`, `camera` y la **política de privacidad** (abre el
+navegador). Desde el `editor` también se puede ir a `camera` para añadir una foto.
 
 El detalle de cada pantalla está en [`04-ui-screens-pantallas.md`](./04-ui-screens-pantallas.md).

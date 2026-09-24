@@ -1,48 +1,31 @@
-
----
-
-## 📄 `docs/09-testing.md`
-
-```markdown
 # 09 - Testing
 
-## Unitarios (JVM)
+## Estado actual
+**48 tests unitarios (JVM)** en `app/src/test`. Se ejecutan con `./gradlew testDebugUnitTest`.
 
-### PdfConfigResolverTest
-- Dado `PageSize.A4` + `Orientation.PORTRAIT` → dimensiones (595, 842)
-- Dado `AUTO` + bitmap 2000x1500 → dimensiones = bitmap / 72 * 72 = mismo
+### Dominio y utilidades puras
+- `PdfConfigResolverTest`: tamaños A4/Carta/AUTO, orientación y `targetDecodeDimension` (DPI).
+- `FileNameSanitizerTest`: caracteres inválidos y extensión `.pdf`.
+- `ImageSamplingTest`: `calculateInSampleSize`.
+- `DefaultFileNameTest`, `FileSizeFormatterTest`, `DateFormatterTest`.
+- `PhotoSelectionTest` (`buildPhotos`), `PhotoEditsTest` (rotar / eliminar / mover).
 
-### FileNameSanitizerTest
-- Caracteres inválidos se reemplazan
-- Se añade extensión `.pdf` si falta
+### Datos y ViewModels
+- `PdfHistoryMapperTest` (entity ⇄ dominio).
+- `EditorViewModelTest`, `HomeViewModelTest`, `ConfigViewModelTest`.
+- `GenerationViewModelTest`: éxito, error de generación, error de guardado y cancelación, con
+  dobles en memoria (`FakePdfGeneratorService`, `FakePdfStorage`, `FakePdfHistoryRepository`).
+- `HistoryViewModelTest`: `Empty` / `Content` / eliminar.
 
-### CalculateInSampleSizeTest
-- Bitmap 4000x3000, maxDim 2048 → inSampleSize = 2
-
-## Instrumentados (Android)
-
-### PdfGeneratorInstrumentedTest
-- Genera PDF de 3 imágenes de test
-- Verifica que existe el archivo y pesa > 0
-- Verifica que PdfRenderer puede leer 3 páginas
-
-### MediaStoreSaverInstrumentedTest
-- Guarda y consulta el archivo
-- Limpia después
-
-## UI (Compose)
-- `EditorScreenTest`: añadir foto → aparece tarjeta
-- `ConfigScreenTest`: cambiar chips actualiza estado
-- Usar `createAndroidComposeRule<MainActivity>()`
-
-## Cobertura objetivo
-- Domain: 80%
-- Data: 60%
-- UI: smoke tests principales
+## Pendiente (requiere emulador o dispositivo)
+- **Instrumentados (Android)**: `PdfGenerator` de extremo a extremo (generar y verificar con
+  `PdfRenderer`) y `AndroidPdfStorage` (MediaStore / FileProvider).
+- **UI (Compose)**: smoke tests de Editor y Config con `createAndroidComposeRule`.
 
 ## Herramientas
-- JUnit 4
-- Truth
-- Turbine (Flow)
-- Mockk
-- Compose UI Test
+- JUnit 4 + Truth
+- `kotlinx-coroutines-test` (ViewModels)
+- Turbine y MockK están declarados en el catálogo, aún sin uso.
+
+## Cobertura objetivo
+- Domain: 80 % · Data: 60 % · UI: smoke tests principales.

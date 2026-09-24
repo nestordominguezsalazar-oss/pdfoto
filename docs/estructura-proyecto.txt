@@ -1,15 +1,23 @@
 pdffoto/
+├── AGENTS.md
 ├── README.md
-├── docs/
-│   ├── 00-overview.md
-│   ├── 01-requisitos.md
-│   ├── 02-arquitectura.md
-│   ├── 03-modelo-datos.md
-│   ├── 04-ui-screens.md
-│   ├── 05-camera-y-galeria.md
-│   ├── 06-generacion-pdf.md
-│   ├── 07-almacenamiento.md
-│   ├── 08-permisos.md
-│   ├── 09-testing.md
-│   ├── 10-build-y-release.md
-│   └── AGENTS.md
+├── PRIVACY.md
+├── privacy.html
+├── settings.gradle.kts
+├── build.gradle.kts
+├── gradle.properties
+├── gradlew / gradlew.bat
+├── gradle/
+│   ├── libs.versions.toml
+│   ├── wrapper/
+│   └── snippets/            # fragmentos de configuración (referencia)
+├── docs/                    # especificación + progreso + Play
+├── scripts/build-release.sh
+├── .github/workflows/android-ci.yml
+├── snippets/kotlin/         # fragmentos de código (referencia)
+└── app/
+    ├── build.gradle.kts
+    ├── proguard-rules.pro
+    └── src/
+        ├── main/            # código y recursos de la app
+        └── test/            # tests unitarios (JVM)

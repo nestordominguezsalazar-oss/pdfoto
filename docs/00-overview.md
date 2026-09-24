@@ -1,9 +1,3 @@
-
----
-
-## 📄 `docs/00-overview.md`
-
-```markdown
 # 00 - Overview
 
 ## Objetivo
