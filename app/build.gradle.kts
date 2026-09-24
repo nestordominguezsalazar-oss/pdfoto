@@ -108,6 +108,9 @@ dependencies {
     // Reordenar con drag & drop
     implementation(libs.reorderable)
 
+    // Orientación EXIF de las fotos
+    implementation(libs.androidx.exifinterface)
+
     // DI (Hilt)
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
