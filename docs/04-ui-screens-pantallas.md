@@ -2,6 +2,7 @@
 
 ## HomeScreen
 - Título "PDFoto" y tagline
+- Distintivos: **Sin publicidad · Sin marca de agua · 100 % offline · Sin recopilar datos**
 - **"Crear PDF"** → inicia un documento nuevo y abre el Photo Picker
 - **"Escanear con cámara"** → inicia un documento nuevo y abre `CameraScreen`
 - **"Historial"** → `HistoryScreen`

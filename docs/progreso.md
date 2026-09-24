@@ -28,7 +28,7 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 ## Qué hay implementado
 
 ### Build / proyecto
-- Versión de la app: **1.2.0** (`versionCode 3`) — `app/build.gradle.kts`
+- Versión de la app: **1.3.0** (`versionCode 4`) — `app/build.gradle.kts`
 - Gradle 8.13 + **AGP 8.11.1** + Kotlin 2.0.20, `compileSdk`/`targetSdk` **36**, `minSdk` 24
 - Catálogo de versiones en `gradle/libs.versions.toml`; wrapper oficial incluido (`./gradlew`)
 - KSP + **Hilt** (DI) y **Room** (persistencia)
@@ -38,8 +38,9 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 ### UI
 - `PdfotoRoot` (tema + `NavHost`) y grafo en `ui/navigation` con rutas `home`, `editor`,
   `config`, `generating`, `result`, `history`, `camera`
-- `HomeScreen`: "Crear PDF", "Escanear con cámara", "Historial" y **"Privacidad"** (abre la
-  política en el navegador)
+- `HomeScreen`: distintivos (**Sin publicidad · Sin marca de agua · 100 % offline · Sin
+  recopilar datos**) y accesos "Crear PDF", "Escanear con cámara", "Historial", "Privacidad"
+  (abre la política) y "Enviar comentarios"
 - `EditorScreen`: Photo Picker (máx. 50), lista con miniaturas (Coil), **rotar**,
   **eliminar** y **reordenar con drag & drop** (`sh.calvin.reorderable`); **tocar una foto
   abre una vista previa a pantalla completa**; estado vacío con "Elegir de la galería" /
