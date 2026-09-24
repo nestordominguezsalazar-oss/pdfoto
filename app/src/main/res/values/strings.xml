@@ -30,6 +30,8 @@
     <string name="editor_rotate">Rotar 90°</string>
     <string name="editor_delete">Eliminar foto</string>
     <string name="editor_drag_handle">Reordenar</string>
+    <string name="editor_photo_preview">Vista previa de la foto</string>
+    <string name="action_close">Cerrar</string>
 
     <!-- Títulos de pantalla -->
     <string name="editor_title">Editor</string>

@@ -27,6 +27,8 @@
     <string name="editor_rotate">Rotate 90°</string>
     <string name="editor_delete">Delete photo</string>
     <string name="editor_drag_handle">Reorder</string>
+    <string name="editor_photo_preview">Photo preview</string>
+    <string name="action_close">Close</string>
 
     <!-- Screen titles -->
     <string name="editor_title">Editor</string>

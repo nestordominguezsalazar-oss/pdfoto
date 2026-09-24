@@ -4,8 +4,11 @@ import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -21,6 +24,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Refresh
@@ -49,11 +53,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
@@ -97,6 +104,7 @@ fun EditorScreen(
     }
 
     var addMenuExpanded by remember { mutableStateOf(false) }
+    var previewPhoto by remember { mutableStateOf<Photo?>(null) }
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -172,11 +180,19 @@ fun EditorScreen(
                 onRotate = viewModel::onRotate,
                 onDelete = viewModel::onDelete,
                 onMove = viewModel::onMove,
+                onPreview = { previewPhoto = it },
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding),
             )
         }
+    }
+
+    previewPhoto?.let { photo ->
+        PhotoPreviewDialog(
+            photo = photo,
+            onDismiss = { previewPhoto = null },
+        )
     }
 }
 
@@ -186,6 +202,7 @@ private fun PhotoList(
     onRotate: (String) -> Unit,
     onDelete: (String) -> Unit,
     onMove: (Int, Int) -> Unit,
+    onPreview: (Photo) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val lazyListState = rememberLazyListState()
@@ -205,6 +222,7 @@ private fun PhotoList(
                     index = index,
                     photo = photo,
                     isDragging = isDragging,
+                    onPreview = { onPreview(photo) },
                     onRotate = { onRotate(photo.id) },
                     onDelete = { onDelete(photo.id) },
                     dragHandle = {
@@ -258,13 +276,16 @@ private fun PhotoCard(
     index: Int,
     photo: Photo,
     isDragging: Boolean,
+    onPreview: () -> Unit,
     onRotate: () -> Unit,
     onDelete: () -> Unit,
     dragHandle: @Composable () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Card(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(onClick = onPreview),
         elevation = CardDefaults.cardElevation(defaultElevation = if (isDragging) 8.dp else 1.dp),
     ) {
         Row(
@@ -313,6 +334,67 @@ private fun PhotoCard(
     }
 }
 
+/**
+ * Vista previa a pantalla completa de una foto, para poder distinguir documentos. Se cierra
+ * tocando la imagen o el botón de cerrar.
+ */
+@Composable
+private fun PhotoPreviewDialog(
+    photo: Photo,
+    onDismiss: () -> Unit,
+) {
+    Dialog(
+        onDismissRequest = onDismiss,
+        properties = DialogProperties(usePlatformDefaultWidth = false),
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black)
+                .clickable(onClick = onDismiss),
+        ) {
+            BoxWithConstraints(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                // Al girar 90/270 se intercambian los lados para que la imagen no se recorte.
+                val rotatedQuarterTurn = photo.rotationDegrees % 180 != 0
+                val imageModifier = if (rotatedQuarterTurn) {
+                    Modifier
+                        .size(width = maxHeight, height = maxWidth)
+                        .rotate(photo.rotationDegrees.toFloat())
+                } else {
+                    Modifier
+                        .fillMaxSize()
+                        .rotate(photo.rotationDegrees.toFloat())
+                }
+
+                AsyncImage(
+                    model = photo.uri,
+                    contentDescription = stringResource(R.string.editor_photo_preview),
+                    contentScale = ContentScale.Fit,
+                    modifier = imageModifier,
+                )
+            }
+
+            IconButton(
+                onClick = onDismiss,
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(8.dp),
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Close,
+                    contentDescription = stringResource(R.string.action_close),
+                    tint = Color.White,
+                )
+            }
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 private fun PhotoCardPreview() {
@@ -321,6 +403,7 @@ private fun PhotoCardPreview() {
             index = 0,
             photo = Photo(id = "1", uri = "", rotationDegrees = 90),
             isDragging = false,
+            onPreview = {},
             onRotate = {},
             onDelete = {},
             dragHandle = {},
