@@ -23,6 +23,7 @@ Antes de escribir código, lee los documentos de [`docs/`](./docs) en orden num�
 | [08-permisos](./docs/08-permisos.md) | Permisos |
 | [09-testing](./docs/09-testing.md) | Estrategia de tests |
 | [10-build-y-release](./docs/10-build-y-release.md) | Gradle, versiones y release |
+| [11-publicacion-play](./docs/11-publicacion-play.md) | Checklist de publicación en Google Play |
 
 Estado actual del desarrollo: [`docs/progreso.md`](./docs/progreso.md).
 
