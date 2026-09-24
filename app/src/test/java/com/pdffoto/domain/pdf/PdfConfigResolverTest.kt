@@ -4,6 +4,7 @@ import com.google.common.truth.Truth.assertThat
 import com.pdffoto.domain.model.Orientation
 import com.pdffoto.domain.model.PageSize
 import com.pdffoto.domain.model.PdfConfig
+import com.pdffoto.domain.model.Quality
 import org.junit.Test
 
 class PdfConfigResolverTest {
@@ -46,5 +47,21 @@ class PdfConfigResolverTest {
 
         assertThat(result.widthPt).isEqualTo(612)
         assertThat(result.heightPt).isEqualTo(792)
+    }
+
+    @Test
+    fun `la resolución de decodificación depende del dpi de la calidad`() {
+        // A4 alto (842 pt) a 150 dpi = 842 / 72 * 150 = 1754 px
+        assertThat(PdfConfigResolver.targetDecodeDimension(PageSize.A4, Quality.MEDIUM)).isEqualTo(1754)
+        assertThat(PdfConfigResolver.targetDecodeDimension(PageSize.A4, Quality.LOW)).isEqualTo(1123)
+        assertThat(PdfConfigResolver.targetDecodeDimension(PageSize.A4, Quality.HIGH)).isEqualTo(2339)
+    }
+
+    @Test
+    fun `la resolución de Carta y AUTO se calculan igual`() {
+        // Carta alto (792 pt) a 150 dpi = 1650 px
+        assertThat(PdfConfigResolver.targetDecodeDimension(PageSize.LETTER, Quality.MEDIUM)).isEqualTo(1650)
+        // AUTO usa una referencia A4
+        assertThat(PdfConfigResolver.targetDecodeDimension(PageSize.AUTO, Quality.MEDIUM)).isEqualTo(1754)
     }
 }

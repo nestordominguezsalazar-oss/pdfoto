@@ -3,6 +3,8 @@ package com.pdffoto.domain.pdf
 import com.pdffoto.domain.model.Orientation
 import com.pdffoto.domain.model.PageSize
 import com.pdffoto.domain.model.PdfConfig
+import com.pdffoto.domain.model.Quality
+import kotlin.math.roundToInt
 
 /**
  * Resuelve el tamaño final de página (en puntos) a partir de la configuración del PDF.
@@ -15,9 +17,9 @@ object PdfConfigResolver {
     private val A4_PORTRAIT = PageDimensions(widthPt = 595, heightPt = 842)
     private val LETTER_PORTRAIT = PageDimensions(widthPt = 612, heightPt = 792)
 
-    private const val A4_MAX_DIMENSION = 2480   // ~300 dpi
-    private const val LETTER_MAX_DIMENSION = 2550
-    private const val AUTO_MAX_DIMENSION = 4096
+    private const val A4_REFERENCE_PT = 842
+    private const val LETTER_REFERENCE_PT = 792
+    private const val POINTS_PER_INCH = 72.0
 
     fun resolve(config: PdfConfig, bitmapWidth: Int, bitmapHeight: Int): PageDimensions {
         val base = when (config.pageSize) {
@@ -34,11 +36,17 @@ object PdfConfigResolver {
         return base.withOrientation(orientation)
     }
 
-    /** Lado mayor al que conviene decodificar una imagen para este tamaño de página. */
-    fun maxDecodeDimension(pageSize: PageSize): Int = when (pageSize) {
-        PageSize.A4 -> A4_MAX_DIMENSION
-        PageSize.LETTER -> LETTER_MAX_DIMENSION
-        PageSize.AUTO -> AUTO_MAX_DIMENSION
+    /**
+     * Lado mayor (en píxeles) al que decodificar la imagen, según el tamaño de página y la
+     * calidad ([Quality.dpi]). Es el principal control del peso del PDF.
+     */
+    fun targetDecodeDimension(pageSize: PageSize, quality: Quality): Int {
+        val referencePt = when (pageSize) {
+            PageSize.A4 -> A4_REFERENCE_PT
+            PageSize.LETTER -> LETTER_REFERENCE_PT
+            PageSize.AUTO -> A4_REFERENCE_PT
+        }
+        return (referencePt / POINTS_PER_INCH * quality.dpi).roundToInt()
     }
 }
 

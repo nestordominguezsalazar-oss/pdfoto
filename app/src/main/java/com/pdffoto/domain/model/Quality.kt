@@ -1,12 +1,14 @@
 package com.pdffoto.domain.model
 
 /**
- * Calidad de compresión JPEG.
+ * Calidad del PDF, expresada como **DPI objetivo** de las imágenes incrustadas.
  *
- * @param jpeg valor 0-100 usado al comprimir/decodificar las imágenes.
+ * Es el principal control del peso del archivo: menos píxeles = PDF más pequeño.
+ *
+ * @param dpi resolución objetivo (puntos por pulgada) al decodificar las fotos.
  */
-enum class Quality(val jpeg: Int) {
-    LOW(60),
-    MEDIUM(80),
-    HIGH(95),
+enum class Quality(val dpi: Int) {
+    LOW(96),
+    MEDIUM(150),
+    HIGH(200),
 }
