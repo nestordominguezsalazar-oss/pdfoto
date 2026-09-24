@@ -2,7 +2,8 @@
 
 App Android nativa para convertir fotos en archivos PDF.
 
-**PDFoto es 100 % libre de publicidad**: no incluye anuncios, analytics ni SDKs de tracking.
+**PDFoto es 100 % libre de publicidad**: no incluye anuncios, analytics ni SDKs de tracking, y
+**no añade marca de agua** a los PDF.
 
 ## Stack
 - Kotlin 2.x

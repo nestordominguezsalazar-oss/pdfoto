@@ -16,6 +16,7 @@ Sin publicidad ni trackers: la app funciona 100 % offline.
 - Generación de PDF en tamaño A4 / Carta / ajustar a imagen
 - Guardado en Downloads
 - Compartir vía Intent
+- **Sin marca de agua**: el PDF generado es 100 % del usuario
 
 ## Fuera de alcance (v2+)
 - OCR

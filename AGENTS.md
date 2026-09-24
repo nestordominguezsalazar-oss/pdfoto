@@ -94,6 +94,7 @@ build(release): configurar firma y minificado del APK
 ### Prohibido
 
 - **Añadir publicidad, analytics o SDKs de tracking** (política de producto: la app es 100 % libre de anuncios; no negociable)
+- **Añadir marca de agua a los PDF** (el documento generado es 100 % del usuario; no negociable)
 - Usar librerías de PDF propietarias (iText comercial)
 - Romper `minSdk 24`
 - Bloquear el hilo principal con I/O o bitmaps

@@ -49,6 +49,7 @@ PRINCIPAL
 • Genera el PDF con progreso visible
 • Guárdalo en Downloads o compártelo donde quieras
 • Historial de tus PDF generados
+• Sin marca de agua en el PDF
 
 CONFIGURABLE
 • Tamaño de página: A4, Carta o ajustar a la imagen
@@ -68,7 +69,7 @@ IDIOMAS
 
 Ideal para escanear apuntes, digitalizar documentos, enviar varias fotos como un solo archivo o guardar recuerdos en PDF.
 
-PDFoto no incluye compras dentro de la aplicación ni suscripciones.
+PDFoto no añade marca de agua ni incluye compras dentro de la aplicación ni suscripciones.
 ```
 
 ### English
@@ -86,6 +87,7 @@ KEY FEATURES
 • Generate the PDF with visible progress
 • Save it to Downloads or share it anywhere
 • History of your generated PDFs
+• No watermark on the PDF
 
 CONFIGURABLE
 • Page size: A4, Letter or fit to image
@@ -105,21 +107,21 @@ LANGUAGES
 
 Great for scanning notes, digitizing documents, sending several photos as a single file, or keeping memories as a PDF.
 
-PDFoto has no in-app purchases and no subscriptions.
+PDFoto adds no watermark and has no in-app purchases and no subscriptions.
 ```
 
 ---
 
 ## Texto promocional (opcional)
 
-**Español (149 caracteres):**
+**Español (168 caracteres):**
 ```
-Convierte fotos en PDF sin publicidad y sin conexión. Reordena, rota y ajusta tamaño, orientación, márgenes y calidad. Todo ocurre en tu dispositivo.
+Convierte fotos en PDF sin publicidad y sin conexión. Sin marca de agua. Reordena, rota y ajusta tamaño, orientación, márgenes y calidad. Todo ocurre en tu dispositivo.
 ```
 
-**English (153 characters):**
+**English (167 characters):**
 ```
-Turn photos into PDF with no ads and no connection. Reorder, rotate and set page size, orientation, margins and quality. Everything stays on your device.
+Turn photos into PDF with no ads and no connection. No watermark. Reorder, rotate and set page size, orientation, margins and quality. Everything stays on your device.
 ```
 
 ## Novedades (primera versión)

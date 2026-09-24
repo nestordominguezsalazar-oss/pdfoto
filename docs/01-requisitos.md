@@ -17,6 +17,7 @@
 | RF12 | Compartir PDF vía Intent                               | Alta      |
 | RF13 | Historial de PDFs generados                            | Baja      |
 | RF14 | Nombre personalizado del archivo                       | Media     |
+| RF15 | PDF **sin marca de agua**                              | Alta      |
 
 > Nota: la **vista previa por foto** en el editor está implementada (tocar una foto). El
 > **RF10** se refiere a la vista previa del **PDF compuesto** antes de generarlo, que aún no
