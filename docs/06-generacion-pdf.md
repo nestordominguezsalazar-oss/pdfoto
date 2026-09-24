@@ -36,7 +36,8 @@ decodifica con sampling (`calculateInSampleSize`) y se ajusta al objetivo con
 `data/pdf/PdfGenerator` (implementa `PdfGeneratorService`):
 
 1. `decodeSampledBitmap(context, uri, targetDimension, rotationDegrees)` → bitmap muestreado y
-   rotado.
+   **enderezado**: aplica la **orientación EXIF** de la foto (con `androidx.exifinterface`) y
+   la rotación pedida por el usuario. Sin esto, las fotos de cámara salen giradas 90°.
 2. `bitmap.scaledDownTo(targetDimension)` → tamaño exacto.
 3. `PdfConfigResolver.resolve(config, bitmap.width, bitmap.height)` → tamaño de página.
 4. `drawBitmapFitted(canvas, bitmap, pageW, pageH, marginPx)` → letterbox centrado + margen.

@@ -71,7 +71,8 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 - `domain/pdf`: `PdfConfigResolver` (tamaños y resolución objetivo), `FileNameSanitizer`,
   `calculateInSampleSize`, `defaultPdfFileName`, `formatFileSize`, `formatTimestamp`,
   `PageDimensions`
-- `domain/photo`: `buildPhotos`, `rotatePhoto`, `removePhoto`, `movePhoto`
+- `domain/photo`: `buildPhotos`, `rotatePhoto`, `removePhoto`, `movePhoto`,
+  `exifOrientationToTransform` (orientación EXIF)
 - `domain/repository/PdfHistoryRepository`
 - `data/local`: `PdfHistoryEntity`, `PdfHistoryDao`, `PdfotoDatabase`, mapper
 - `data/repository/PdfHistoryRepositoryImpl`
@@ -115,7 +116,7 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 | Check | Resultado |
 |-------|-----------|
 | `./gradlew assembleDebug` | ✅ APK debug |
-| `./gradlew testDebugUnitTest` | ✅ 48/48 tests |
+| `./gradlew testDebugUnitTest` | ✅ 54/54 tests |
 | `./gradlew lintDebug` | ✅ 0 errores (28 avisos, todos "hay versión más nueva") |
 | `./gradlew bundleRelease` | ✅ `app-release.aab` ≈ 4.7 MB (firma verificada) |
 
@@ -178,8 +179,13 @@ Minors diferidos (no arreglados):
   la recomprresión JPEG previa no reducía nada. Solución: **la calidad ahora es un DPI
   objetivo** (Baja 96 / Media 150 / Alta 200 dpi) que fija la resolución de decodificación
   (`PdfConfigResolver.targetDecodeDimension`) y se aplica un escalado exacto
-  (`Bitmap.scaledDownTo`). Se eliminó `JpegConverter`. *Pendiente: medir en dispositivo el
-  peso real con un set de fotos y ajustar los dpi si hace falta.*
+  (`Bitmap.scaledDownTo`). Se eliminó `JpegConverter`. *(Validado por el usuario: el tamaño
+  ya es correcto.)*
+- **Las fotos salían giradas 90° en el PDF.** Causa: las fotos (cámara y muchas de galería)
+  traen una etiqueta **EXIF de orientación** con los píxeles "sin enderezar". Coil (miniatura
+  del editor) aplica EXIF, pero el decoder del PDF no. Solución: se lee la orientación EXIF
+  (`androidx.exifinterface`) y se endereza el bitmap, combinándola con la rotación del
+  usuario. Función pura `exifOrientationToTransform` (`domain/photo`) + tests.
 
 ## Pendiente para publicar en Google Play
 
