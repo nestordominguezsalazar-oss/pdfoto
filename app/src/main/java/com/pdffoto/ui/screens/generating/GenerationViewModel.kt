@@ -2,6 +2,7 @@ package com.pdffoto.ui.screens.generating
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pdffoto.data.logging.AppLogger
 import com.pdffoto.data.pdf.PdfGeneratorService
 import com.pdffoto.data.pdf.PdfOutputFileProvider
 import com.pdffoto.data.session.CreationSession
@@ -25,6 +26,7 @@ class GenerationViewModel @Inject constructor(
     private val outputFiles: PdfOutputFileProvider,
     private val storage: PdfStorage,
     private val historyRepository: PdfHistoryRepository,
+    private val logger: AppLogger,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<GenerationUiState>(GenerationUiState.Idle)
@@ -56,7 +58,10 @@ class GenerationViewModel @Inject constructor(
                 },
             ).fold(
                 onSuccess = { _state.value = save(outputFile, config.fileName, photos.size) },
-                onFailure = { _state.value = GenerationUiState.Error(message = it.message) },
+                onFailure = {
+                    logger.logError("generation", it)
+                    _state.value = GenerationUiState.Error(message = it.message)
+                },
             )
         }
     }
@@ -76,7 +81,10 @@ class GenerationViewModel @Inject constructor(
                 session.setLastResult(job)
                 GenerationUiState.Success(pdf = job)
             },
-            onFailure = { GenerationUiState.Error(message = it.message) },
+            onFailure = {
+                logger.logError("save", it)
+                GenerationUiState.Error(message = it.message)
+            },
         )
 
     /** Cancela la generación en curso y vuelve a [GenerationUiState.Idle]. */

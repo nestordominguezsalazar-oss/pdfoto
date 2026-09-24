@@ -23,10 +23,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.pdffoto.R
 import com.pdffoto.ui.theme.PDFotoTheme
 import com.pdffoto.ui.util.openUrl
+import com.pdffoto.ui.util.sendFeedback
 
 /**
- * Pantalla de inicio: punto de entrada para crear un PDF, escanear, ver el historial o
- * consultar la política de privacidad.
+ * Pantalla de inicio: crear un PDF, escanear, ver el historial, la política de privacidad o
+ * enviar comentarios.
  */
 @Composable
 fun HomeScreen(
@@ -38,6 +39,8 @@ fun HomeScreen(
 ) {
     val context = LocalContext.current
     val privacyUrl = stringResource(R.string.privacy_policy_url)
+    val supportEmail = stringResource(R.string.support_email)
+    val feedbackSubject = stringResource(R.string.feedback_subject)
 
     HomeContent(
         onCreatePdf = {
@@ -50,6 +53,15 @@ fun HomeScreen(
         },
         onOpenHistory = onOpenHistory,
         onOpenPrivacy = { openUrl(context, privacyUrl) },
+        onSendFeedback = {
+            sendFeedback(
+                context = context,
+                email = supportEmail,
+                subject = feedbackSubject,
+                body = viewModel.feedbackDiagnostics(),
+                attachment = viewModel.feedbackLogFile(),
+            )
+        },
         modifier = modifier,
     )
 }
@@ -60,6 +72,7 @@ private fun HomeContent(
     onOpenCamera: () -> Unit,
     onOpenHistory: () -> Unit,
     onOpenPrivacy: () -> Unit,
+    onSendFeedback: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(modifier = modifier.fillMaxSize()) { innerPadding ->
@@ -105,6 +118,10 @@ private fun HomeContent(
             TextButton(onClick = onOpenPrivacy) {
                 Text(text = stringResource(R.string.home_privacy))
             }
+
+            TextButton(onClick = onSendFeedback) {
+                Text(text = stringResource(R.string.home_feedback))
+            }
         }
     }
 }
@@ -118,6 +135,7 @@ private fun HomeContentPreview() {
             onOpenCamera = {},
             onOpenHistory = {},
             onOpenPrivacy = {},
+            onSendFeedback = {},
         )
     }
 }

@@ -1,6 +1,7 @@
 package com.pdffoto.ui.screens.generating
 
 import com.google.common.truth.Truth.assertThat
+import com.pdffoto.data.logging.AppLogger
 import com.pdffoto.data.pdf.PdfGeneratorService
 import com.pdffoto.data.pdf.PdfOutputFileProvider
 import com.pdffoto.data.session.CreationSession
@@ -44,6 +45,7 @@ class GenerationViewModelTest {
         outputFiles = outputFileProvider,
         storage = FakePdfStorage(storage),
         historyRepository = history,
+        logger = AppLogger { File("/tmp/pdffoto-test.log") },
     )
 
     @Test

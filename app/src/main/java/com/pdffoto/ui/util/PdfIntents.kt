@@ -3,8 +3,10 @@ package com.pdffoto.ui.util
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import androidx.core.content.FileProvider
 import androidx.core.net.toUri
 import com.pdffoto.R
+import java.io.File
 
 /** Abre el PDF con la app visora del sistema. Devuelve `false` si no hay ninguna. */
 fun openPdf(context: Context, uri: String): Boolean = try {
@@ -35,4 +37,34 @@ fun sharePdf(context: Context, uri: String) {
     }
     val chooser = Intent.createChooser(sendIntent, context.getString(R.string.share_pdf_title))
     context.startActivity(chooser)
+}
+
+/**
+ * Abre un correo prerellenado con los diagnósticos y, si existe, adjunta el log local.
+ * Lo envía el usuario con su app de correo: la app no hace ninguna conexión.
+ */
+fun sendFeedback(
+    context: Context,
+    email: String,
+    subject: String,
+    body: String,
+    attachment: File?,
+) {
+    val intent = Intent(Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+        putExtra(Intent.EXTRA_SUBJECT, subject)
+        putExtra(Intent.EXTRA_TEXT, body)
+
+        if (attachment != null && attachment.exists()) {
+            val uri = FileProvider.getUriForFile(
+                context,
+                "${context.packageName}.fileprovider",
+                attachment,
+            )
+            putExtra(Intent.EXTRA_STREAM, uri)
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+    }
+    context.startActivity(Intent.createChooser(intent, subject))
 }

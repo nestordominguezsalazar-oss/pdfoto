@@ -112,7 +112,8 @@ fun CameraScreen(
                                 val uri = capturePhoto(context, imageCapture)
                                 viewModel.onPhotoCaptured(uri.toString())
                                 onPhotoCaptured()
-                            } catch (_: Exception) {
+                            } catch (error: Exception) {
+                                viewModel.onCaptureError(error)
                                 captureFailed = true
                             } finally {
                                 capturing = false

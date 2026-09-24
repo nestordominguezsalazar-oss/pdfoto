@@ -15,6 +15,9 @@
     <string name="home_scan_camera">Escanear con cámara</string>
     <string name="home_history">Historial</string>
     <string name="home_privacy">Privacidad</string>
+    <string name="home_feedback">Enviar comentarios</string>
+    <string name="feedback_subject">Comentarios sobre PDFoto</string>
+    <string name="support_email" translatable="false">nestordominguezsalazar@gmail.com</string>
 
     <!-- URL pública de la política de privacidad. Cámbiala por la definitiva al publicarla. -->
     <string name="privacy_policy_url" translatable="false">https://nestordominguezsalazar.github.io/pdffoto/privacy.html</string>
