@@ -28,6 +28,8 @@
     <string name="about_advantages_title">Highlights</string>
     <string name="about_adv_no_storage">No storage permissions</string>
     <string name="about_adv_languages">Spanish and English</string>
+    <string name="about_support_title">Support</string>
+    <string name="about_licenses_title">Open-source licenses</string>
     <string name="feedback_subject">Feedback about PDFoto</string>
 
     <!-- Editor -->

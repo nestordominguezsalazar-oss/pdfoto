@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -107,6 +108,35 @@ fun AboutScreen(
                 FeatureBadge(stringResource(R.string.home_badge_free))
                 FeatureBadge(stringResource(R.string.about_adv_languages))
             }
+
+            Spacer(modifier = Modifier.height(24.dp))
+            Text(
+                text = stringResource(R.string.about_support_title),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.fillMaxWidth(),
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            SelectionContainer {
+                Text(
+                    text = supportEmail,
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
+            Text(
+                text = stringResource(R.string.about_licenses_title),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.fillMaxWidth(),
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = stringResource(R.string.about_licenses_body),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.fillMaxWidth(),
+            )
 
             Spacer(modifier = Modifier.height(24.dp))
             OutlinedButton(

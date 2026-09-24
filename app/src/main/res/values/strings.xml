@@ -28,6 +28,9 @@
     <string name="about_advantages_title">Ventajas</string>
     <string name="about_adv_no_storage">Sin permisos de almacenamiento</string>
     <string name="about_adv_languages">Español e inglés</string>
+    <string name="about_support_title">Soporte</string>
+    <string name="about_licenses_title">Licencias de código abierto</string>
+    <string name="about_licenses_body" translatable="false">PDFoto usa software de código abierto:\n• AndroidX y Jetpack Compose (Apache-2.0)\n• Kotlin y kotlinx.coroutines (Apache-2.0)\n• Hilt / Dagger (Apache-2.0)\n• Room (Apache-2.0)\n• Coil (Apache-2.0)\n• CameraX (Apache-2.0)\n• Reorderable, de Calvin Liang (Apache-2.0)</string>
     <string name="feedback_subject">Comentarios sobre PDFoto</string>
     <string name="support_email" translatable="false">nestordominguezsalazar@gmail.com</string>
 
