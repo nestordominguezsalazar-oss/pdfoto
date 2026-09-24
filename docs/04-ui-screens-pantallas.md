@@ -2,11 +2,19 @@
 
 ## HomeScreen
 - Título "PDFoto" y tagline
-- Distintivos: **Sin publicidad · Sin marca de agua · 100 % offline · Sin recopilar datos**
+- Distintivos: **Sin publicidad · Sin marca de agua · 100 % offline · Sin recopilar datos ·
+  Gratis, sin compras**
 - **"Crear PDF"** → inicia un documento nuevo y abre el Photo Picker
 - **"Escanear con cámara"** → inicia un documento nuevo y abre `CameraScreen`
 - **"Historial"** → `HistoryScreen`
+- **"Acerca de"** → `AboutScreen`
+
+## AboutScreen
+- Nombre de la app y **versión**
+- **Ventajas** (distintivos): sin publicidad, sin marca de agua, 100 % offline, sin recopilar
+  datos, sin permisos de almacenamiento, gratis sin compras, español e inglés
 - **"Privacidad"** → abre la política en el navegador
+- **"Enviar comentarios"** → correo prerellenado con diagnósticos + log local
 
 ## EditorScreen
 - `LazyColumn` de tarjetas: miniatura, índice, grados de rotación, botones **rotar** y
@@ -28,6 +36,7 @@
 
 ## ResultScreen
 - Icono de éxito, nombre del archivo y "N páginas · tamaño"
+- Distintivo **"Sin marca de agua"**
 - Botones **"Abrir"**, **"Compartir"** y **"Volver al inicio"**
 
 ## HistoryScreen
