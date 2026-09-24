@@ -18,6 +18,14 @@ fun openPdf(context: Context, uri: String): Boolean = try {
     false
 }
 
+/** Abre una URL en el navegador. Devuelve `false` si no hay ninguna app que la maneje. */
+fun openUrl(context: Context, url: String): Boolean = try {
+    context.startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
+    true
+} catch (_: ActivityNotFoundException) {
+    false
+}
+
 /** Comparte el PDF con el selector de apps del sistema. */
 fun sharePdf(context: Context, uri: String) {
     val sendIntent = Intent(Intent.ACTION_SEND).apply {

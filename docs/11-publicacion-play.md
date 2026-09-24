@@ -23,13 +23,15 @@ cumplidos; lo que falta son trámites y recursos de ficha.
 Play exige un enlace a la política **en la ficha** y **dentro de la app**.
 
 - [ ] Rellenar los campos `[REQUERIDO]` (responsable y correo) en [`../PRIVACY.md`](../PRIVACY.md).
+- [x] HTML listo para publicar: [`../privacy.html`](../privacy.html) (bilingüe, autocontenido).
 - [ ] Publicarla en una URL pública. Sin dominio, la vía gratuita es **GitHub Pages**:
   1. Subir el repo a GitHub.
   2. *Settings → Pages → Deploy from a branch* (rama `main`, carpeta `/root`).
-  3. La URL queda como `https://<usuario>.github.io/pdffoto/PRIVACY` (o servir un HTML).
+  3. La URL queda como `https://<usuario>.github.io/pdffoto/privacy.html`.
 - [ ] Pegar la URL en Play Console (*Política de privacidad*).
-- [ ] Añadir el enlace **dentro de la app** (pantalla "Acerca de" / ajustes). *Pendiente
-      de implementar: es un cambio pequeño de UI (ruta + texto + intent).*
+- [x] Enlace **dentro de la app**: botón "Privacidad" en la pantalla de inicio.
+      ⚠️ Actualiza `privacy_policy_url` en `app/src/main/res/values/strings.xml` con la URL
+      definitiva antes de publicar.
 
 ## 3. Data safety (formulario obligatorio)
 

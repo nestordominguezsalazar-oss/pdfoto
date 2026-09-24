@@ -14,6 +14,7 @@
     <string name="home_create_pdf">Create PDF</string>
     <string name="home_scan_camera">Scan with camera</string>
     <string name="home_history">History</string>
+    <string name="home_privacy">Privacy</string>
 
     <!-- Editor -->
     <string name="editor_empty_message">No photos yet, add some</string>

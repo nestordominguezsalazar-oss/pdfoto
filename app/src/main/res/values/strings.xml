@@ -14,6 +14,10 @@
     <string name="home_create_pdf">Crear PDF</string>
     <string name="home_scan_camera">Escanear con cámara</string>
     <string name="home_history">Historial</string>
+    <string name="home_privacy">Privacidad</string>
+
+    <!-- URL pública de la política de privacidad. Cámbiala por la definitiva al publicarla. -->
+    <string name="privacy_policy_url" translatable="false">https://nestordominguezsalazar.github.io/pdffoto/privacy.html</string>
 
     <!-- Editor -->
     <string name="editor_empty_message">No hay fotos, añade algunas</string>

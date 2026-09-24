@@ -14,6 +14,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,9 +22,11 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.pdffoto.R
 import com.pdffoto.ui.theme.PDFotoTheme
+import com.pdffoto.ui.util.openUrl
 
 /**
- * Pantalla de inicio: punto de entrada para crear un PDF, escanear o ver el historial.
+ * Pantalla de inicio: punto de entrada para crear un PDF, escanear, ver el historial o
+ * consultar la política de privacidad.
  */
 @Composable
 fun HomeScreen(
@@ -33,6 +36,9 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
+    val context = LocalContext.current
+    val privacyUrl = stringResource(R.string.privacy_policy_url)
+
     HomeContent(
         onCreatePdf = {
             viewModel.startNewCreation()
@@ -43,6 +49,7 @@ fun HomeScreen(
             onOpenCamera()
         },
         onOpenHistory = onOpenHistory,
+        onOpenPrivacy = { openUrl(context, privacyUrl) },
         modifier = modifier,
     )
 }
@@ -52,6 +59,7 @@ private fun HomeContent(
     onCreatePdf: () -> Unit,
     onOpenCamera: () -> Unit,
     onOpenHistory: () -> Unit,
+    onOpenPrivacy: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(modifier = modifier.fillMaxSize()) { innerPadding ->
@@ -93,6 +101,10 @@ private fun HomeContent(
             TextButton(onClick = onOpenHistory) {
                 Text(text = stringResource(R.string.home_history))
             }
+
+            TextButton(onClick = onOpenPrivacy) {
+                Text(text = stringResource(R.string.home_privacy))
+            }
         }
     }
 }
@@ -101,6 +113,11 @@ private fun HomeContent(
 @Composable
 private fun HomeContentPreview() {
     PDFotoTheme {
-        HomeContent(onCreatePdf = {}, onOpenCamera = {}, onOpenHistory = {})
+        HomeContent(
+            onCreatePdf = {},
+            onOpenCamera = {},
+            onOpenHistory = {},
+            onOpenPrivacy = {},
+        )
     }
 }
