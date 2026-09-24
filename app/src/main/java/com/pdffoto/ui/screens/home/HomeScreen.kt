@@ -2,6 +2,8 @@ package com.pdffoto.ui.screens.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,6 +11,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -66,6 +69,7 @@ fun HomeScreen(
     )
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun HomeContent(
     onCreatePdf: () -> Unit,
@@ -95,11 +99,22 @@ private fun HomeContent(
                 textAlign = TextAlign.Center,
             )
 
+            FlowRow(
+                modifier = Modifier.padding(top = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                FeatureBadge(stringResource(R.string.home_badge_no_ads))
+                FeatureBadge(stringResource(R.string.home_badge_no_watermark))
+                FeatureBadge(stringResource(R.string.home_badge_offline))
+                FeatureBadge(stringResource(R.string.home_badge_private))
+            }
+
             Button(
                 onClick = onCreatePdf,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 16.dp),
+                    .padding(top = 8.dp),
             ) {
                 Text(text = stringResource(R.string.home_create_pdf))
             }
@@ -123,6 +138,21 @@ private fun HomeContent(
                 Text(text = stringResource(R.string.home_feedback))
             }
         }
+    }
+}
+
+@Composable
+private fun FeatureBadge(text: String) {
+    Surface(
+        shape = MaterialTheme.shapes.small,
+        color = MaterialTheme.colorScheme.secondaryContainer,
+        contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelMedium,
+            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+        )
     }
 }
 

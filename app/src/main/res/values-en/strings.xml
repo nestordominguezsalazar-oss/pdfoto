@@ -2,6 +2,10 @@
 <resources>
     <string name="app_name">PDFoto</string>
     <string name="home_tagline">Turn your photos into PDF</string>
+    <string name="home_badge_no_ads">No ads</string>
+    <string name="home_badge_no_watermark">No watermark</string>
+    <string name="home_badge_offline" formatted="false">100% offline</string>
+    <string name="home_badge_private">No data collected</string>
 
     <!-- Actions -->
     <string name="action_back">Back</string>
