@@ -22,7 +22,8 @@
     <!-- Editor -->
     <string name="editor_empty_message">No hay fotos, añade algunas</string>
     <string name="editor_add_photos">Añadir más fotos</string>
-    <string name="editor_add_first">Añadir fotos</string>
+    <string name="editor_add_from_gallery">Elegir de la galería</string>
+    <string name="editor_add_from_camera">Hacer una foto</string>
     <string name="editor_photo_index">Foto %1$d</string>
     <string name="editor_photo_rotated">Girada %1$d°</string>
     <string name="editor_photo_description">Miniatura de la foto %1$d</string>

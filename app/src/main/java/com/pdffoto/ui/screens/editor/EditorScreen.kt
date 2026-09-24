@@ -5,6 +5,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -26,11 +27,14 @@ import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -38,6 +42,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -64,6 +71,7 @@ private const val MaxPhotos = 50
 fun EditorScreen(
     onBack: () -> Unit,
     onContinue: () -> Unit,
+    onAddFromCamera: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: EditorViewModel = hiltViewModel(),
 ) {
@@ -88,6 +96,8 @@ fun EditorScreen(
         }
     }
 
+    var addMenuExpanded by remember { mutableStateOf(false) }
+
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
@@ -104,11 +114,33 @@ fun EditorScreen(
             )
         },
         floatingActionButton = {
-            ExtendedFloatingActionButton(
-                onClick = launchPicker,
-                icon = { Icon(imageVector = Icons.Filled.Add, contentDescription = null) },
-                text = { Text(text = stringResource(R.string.editor_add_photos)) },
-            )
+            // El botón "Añadir" ofrece elegir de la galería o hacer una foto.
+            Box {
+                ExtendedFloatingActionButton(
+                    onClick = { addMenuExpanded = true },
+                    icon = { Icon(imageVector = Icons.Filled.Add, contentDescription = null) },
+                    text = { Text(text = stringResource(R.string.editor_add_photos)) },
+                )
+                DropdownMenu(
+                    expanded = addMenuExpanded,
+                    onDismissRequest = { addMenuExpanded = false },
+                ) {
+                    DropdownMenuItem(
+                        text = { Text(text = stringResource(R.string.editor_add_from_gallery)) },
+                        onClick = {
+                            addMenuExpanded = false
+                            launchPicker()
+                        },
+                    )
+                    DropdownMenuItem(
+                        text = { Text(text = stringResource(R.string.editor_add_from_camera)) },
+                        onClick = {
+                            addMenuExpanded = false
+                            onAddFromCamera()
+                        },
+                    )
+                }
+            }
         },
         bottomBar = {
             Surface(tonalElevation = 3.dp) {
@@ -127,7 +159,8 @@ fun EditorScreen(
     ) { innerPadding ->
         if (photos.isEmpty()) {
             EmptyEditor(
-                onAddPhotos = launchPicker,
+                onAddFromGallery = launchPicker,
+                onAddFromCamera = onAddFromCamera,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding)
@@ -190,7 +223,8 @@ private fun PhotoList(
 
 @Composable
 private fun EmptyEditor(
-    onAddPhotos: () -> Unit,
+    onAddFromGallery: () -> Unit,
+    onAddFromCamera: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -204,8 +238,17 @@ private fun EmptyEditor(
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center,
         )
-        Button(onClick = onAddPhotos) {
-            Text(text = stringResource(R.string.editor_add_first))
+        Button(
+            onClick = onAddFromGallery,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Text(text = stringResource(R.string.editor_add_from_gallery))
+        }
+        OutlinedButton(
+            onClick = onAddFromCamera,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Text(text = stringResource(R.string.editor_add_from_camera))
         }
     }
 }

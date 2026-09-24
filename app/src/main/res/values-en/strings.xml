@@ -19,7 +19,8 @@
     <!-- Editor -->
     <string name="editor_empty_message">No photos yet, add some</string>
     <string name="editor_add_photos">Add more photos</string>
-    <string name="editor_add_first">Add photos</string>
+    <string name="editor_add_from_gallery">Choose from gallery</string>
+    <string name="editor_add_from_camera">Take a photo</string>
     <string name="editor_photo_index">Photo %1$d</string>
     <string name="editor_photo_rotated">Rotated %1$d°</string>
     <string name="editor_photo_description">Thumbnail of photo %1$d</string>

@@ -41,6 +41,7 @@ fun PdfotoNavHost(
             EditorScreen(
                 onBack = { navController.popBackStack() },
                 onContinue = { navController.navigate(Destination.Config.route) },
+                onAddFromCamera = { navController.navigate(Destination.Camera.route) },
             )
         }
 
