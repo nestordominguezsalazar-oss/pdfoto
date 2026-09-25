@@ -32,8 +32,13 @@ con `./gradlew connectedDebugAndroidTest`. También compilan solos con `assemble
 - `EditorScreenSmokeTest` y `ConfigScreenSmokeTest`: la pantalla se renderiza y su acción
   principal está presente (`createComposeRule`).
 
+## CI (`.github/workflows/android-ci.yml`)
+Dos trabajos en cada `push` / `pull_request`:
+- **build**: `testDebugUnitTest` + `lintDebug` + `assembleDebug`.
+- **instrumented**: emulador API 36 (`reactivecircus/android-emulator-runner`) que ejecuta
+  `connectedDebugAndroidTest` y sube los informes como artefacto.
+
 ## Pendiente
-- **CI**: ejecutar los instrumentados en un emulador (el workflow actual solo corre unit tests).
 - **UI**: ampliar los smoke tests a interacciones (no solo render).
 
 ## Herramientas
