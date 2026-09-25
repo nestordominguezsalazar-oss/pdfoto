@@ -81,13 +81,20 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 36
-          target: aosp_atd
+          target: google_apis
           arch: x86_64
           disable-animations: true
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect -memory 2048
           script: |
             chmod +x ./gradlew
-            ./gradlew connectedDebugAndroidTest --stacktrace
+            ADB="${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}/platform-tools/adb"
+            "$ADB" logcat -c || true
+            ./gradlew connectedDebugAndroidTest --stacktrace || {
+              echo "=== LOGCAT (últimas 400 líneas) ==="
+              "$ADB" logcat -d -v time | tail -400
+              "$ADB" logcat -d -v time > logcat.txt || true
+              exit 1
+            }
 
       - name: Subir informes de tests
         if: always()
@@ -97,3 +104,4 @@ jobs:
           path: |
             app/build/reports/androidTests/connected/**
             app/build/outputs/androidTest-results/connected/**
+            logcat.txt
