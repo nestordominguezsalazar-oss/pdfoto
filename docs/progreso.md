@@ -231,7 +231,7 @@ Minors diferidos (no arreglados):
 1. **Política de privacidad** — hecha (`PRIVACY.md` + `privacy.html`); falta **publicarla en
    una URL** (GitHub Pages) y pegar el enlace en Play Console. El enlace **dentro de la app**
    ya existe (botón "Privacidad" en Inicio) y `privacy_policy_url` ya apunta a
-   `https://nestordominguezsalazar.github.io/pdfoto/privacy.html`; falta que esa URL esté
+   `https://nestordominguezsalazar-oss.github.io/pdfoto/privacy.html`; falta que esa URL esté
    publicada.
 2. **Data safety** — declarar "no recopila datos".
 3. **Firma de release** con Play App Signing (`keystore.properties`).
