@@ -1,7 +1,8 @@
 # 11 - Publicación en Google Play
 
 Checklist para publicar **PDFoto** (`com.pdfoto`). Los requisitos técnicos ya están
-cumplidos; lo que falta son trámites y recursos de ficha.
+cumplidos; lo que falta son trámites y recursos de ficha. Todos los datos listos para pegar
+en Play Console están en [`14-datos-play.md`](./14-datos-play.md).
 
 ## 0. Requisitos técnicos (ya cumplidos)
 

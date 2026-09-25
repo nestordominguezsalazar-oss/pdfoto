@@ -233,6 +233,8 @@ Minors diferidos (no arreglados):
   1.3.4). Se sube **CameraX a 1.4.2**, cuyas libs nativas ya van alineadas a 16 KB
   (`LOAD p_align = 0x4000`); verificado en APK debug y AAB release. Google Play lo exige para
   apps que apuntan a Android 15+.
+- **Datos para la ficha de Play** reunidos en [`docs/14-datos-play.md`](./14-datos-play.md)
+  (textos, gráficos, Data safety, clasificación, público y firma).
 
 ## Pendiente para publicar en Google Play
 
