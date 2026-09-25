@@ -45,7 +45,7 @@ jobs:
 
   instrumented:
     name: Tests instrumentados (emulador API 36)
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
@@ -82,10 +82,10 @@ jobs:
         with:
           api-level: 36
           target: default
-          arch: x86_64
+          arch: arm64-v8a
           disable-animations: true
           emulator-boot-timeout: 900
-          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect -memory 2048
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim
           script: chmod +x ./gradlew && ./gradlew connectedDebugAndroidTest --stacktrace; code=$?; if [ $code -ne 0 ]; then "$ANDROID_SDK_ROOT/platform-tools/adb" logcat -d -v time | tail -300; fi; exit $code
 
       - name: Subir informes de tests
