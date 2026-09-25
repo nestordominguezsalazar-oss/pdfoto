@@ -21,11 +21,12 @@
 - `HistoryViewModelTest`: `Empty` / `Content` / eliminar.
 
 ## Instrumentados (Android) — `app/src/androidTest`
-**Ejecutados en un dispositivo real** (Samsung SM-S938B, Android 16 / API 36): **7/7 en verde**
+**Ejecutados en un dispositivo real** (Samsung SM-S938B, Android 16 / API 36): **8/8 en verde**
 con `./gradlew connectedDebugAndroidTest`. También compilan solos con `assembleDebugAndroidTest`.
 
 - `PdfGeneratorInstrumentedTest`: genera un PDF real desde imágenes sintéticas y lo reabre con
-  `PdfRenderer` (nº de páginas, tamaño A4 en vertical, progreso 1-based y foto ilegible omitida).
+  `PdfRenderer` (nº de páginas, tamaño A4 en vertical, progreso 1-based y fotos ilegibles o con
+  URI inaccesible omitidas).
 - `AndroidPdfStorageTest`: ejercita la ruta real de guardado (MediaStore en API 29+ o
   FileProvider por debajo) y vuelve a leer el PDF.
 - `EditorScreenSmokeTest` y `ConfigScreenSmokeTest`: la pantalla se renderiza y su acción

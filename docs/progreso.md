@@ -138,7 +138,7 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 | `./gradlew lintDebug` | ✅ 0 errores (28 avisos, todos "hay versión más nueva") |
 | `./gradlew bundleRelease` | ✅ `app-release.aab` ≈ 4.7 MB (firma verificada) |
 
-Tests instrumentados (`androidTest`): **7/7 en verde** en dispositivo real (SM-S938B, Android 16 /
+Tests instrumentados (`androidTest`): **8/8 en verde** en dispositivo real (SM-S938B, Android 16 /
 API 36) con `./gradlew connectedDebugAndroidTest` — ver `docs/09`.
 
 ### Cómo reproducirlo en local
@@ -193,6 +193,10 @@ Minors diferidos (no arreglados):
   exponía `stateIn(initialValue = Empty)`; ahora expone `session.photos` directamente.
 
 ### 2026-09-24
+- **Una foto con URI inaccesible abortaba la generación.** `decodeSampledBitmap`
+  (`data/pdf/AndroidBitmapDecoder`) ahora devuelve `null` ante cualquier fallo de lectura o
+  decodificación (URI inaccesible, permiso revocado o archivo corrupto), así que esa foto se
+  omite y el PDF se genera con el resto. Detectado por los tests instrumentados.
 - **No se podía añadir una foto desde la cámara dentro del editor.** El FAB "Añadir más
   fotos" ahora abre un menú con **galería** o **cámara**, y el estado vacío ofrece ambas.
 - **Peso del PDF demasiado alto (≈9 MB por página).** Causa: `PdfDocument` (Skia) incrusta

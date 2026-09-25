@@ -113,6 +113,28 @@ class PdfGeneratorInstrumentedTest {
         assertThat(contarPaginas(salida)).isEqualTo(1)
     }
 
+    @Test
+    fun omiteLasFotosConUriInaccesible() = runBlocking {
+        val valida = crearFoto(context, "pdfoto_valida2.png", Color.RED, order = 0)
+        val inaccesible = Photo(
+            id = "inaccesible",
+            uri = "file:///no/existe/pdfoto.png",
+            order = 1,
+        )
+        val salida = File(context.cacheDir, "pdfoto_uri_inaccesible.pdf")
+
+        val resultado = PdfGenerator(context).generate(
+            photos = listOf(valida, inaccesible),
+            config = PdfConfig(),
+            outputFile = salida,
+            onProgress = { _, _ -> },
+        )
+
+        // Una URI que no se puede abrir se omite; el PDF se genera con el resto.
+        assertThat(resultado.isSuccess).isTrue()
+        assertThat(contarPaginas(salida)).isEqualTo(1)
+    }
+
     private fun contarPaginas(file: File): Int =
         ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY).use { pfd ->
             PdfRenderer(pfd).use { it.pageCount }
