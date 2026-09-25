@@ -1,6 +1,6 @@
 # 11 - Publicación en Google Play
 
-Checklist para publicar **PDFoto** (`com.pdffoto`). Los requisitos técnicos ya están
+Checklist para publicar **PDFoto** (`com.pdfoto`). Los requisitos técnicos ya están
 cumplidos; lo que falta son trámites y recursos de ficha.
 
 ## 0. Requisitos técnicos (ya cumplidos)
@@ -14,7 +14,7 @@ cumplidos; lo que falta son trámites y recursos de ficha.
 
 - [ ] Crear cuenta de **Google Play Console** (25 USD, pago único).
 - [ ] Completar la **verificación de identidad** del desarrollador.
-- [ ] **Registrar el package name** `com.pdffoto` (verificación de desarrollador).
+- [ ] **Registrar el package name** `com.pdfoto` (verificación de desarrollador).
       Plazo de referencia: **2026-09-30**. Las apps nuevas se auto-registran al crearlas
       en Play Console.
 
@@ -27,11 +27,11 @@ Play exige un enlace a la política **en la ficha** y **dentro de la app**.
 - [ ] Publicarla en una URL pública. Sin dominio, la vía gratuita es **GitHub Pages**:
   1. Subir el repo a GitHub.
   2. *Settings → Pages → Deploy from a branch* (rama `main`, carpeta `/root`).
-  3. La URL queda como `https://<usuario>.github.io/pdffoto/privacy.html`.
+  3. La URL queda como `https://<usuario>.github.io/pdfoto/privacy.html`.
 - [ ] Pegar la URL en Play Console (*Política de privacidad*).
 - [x] Enlace **dentro de la app**: botón "Privacidad" en la pantalla de inicio.
       `privacy_policy_url` (`app/src/main/res/values/strings.xml`) ya apunta a
-      `https://nestordominguezsalazar.github.io/pdffoto/privacy.html`.
+      `https://nestordominguezsalazar.github.io/pdfoto/privacy.html`.
 - [ ] Verificar que esa URL está **publicada y accesible** (ver el paso 2.1 anterior).
 
 ## 3. Data safety (formulario obligatorio)
@@ -48,7 +48,7 @@ Play exige un enlace a la política **en la ficha** y **dentro de la app**.
 
 - [ ] Crear la clave de subida:
   ```bash
-  keytool -genkeypair -v -keystore release.jks -alias pdffoto \
+  keytool -genkeypair -v -keystore release.jks -alias pdfoto \
     -keyalg RSA -keysize 2048 -validity 10000
   ```
 - [ ] Copiar `keystore.properties.example` a `keystore.properties` y rellenarlo

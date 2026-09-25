@@ -52,7 +52,7 @@ data class PdfJob(
 
 ## Inyección de dependencias
 
-Módulos de Hilt en `com.pdffoto.di`:
+Módulos de Hilt en `com.pdfoto.di`:
 
 - `DatabaseModule` — provee `PdfotoDatabase` y `PdfHistoryDao`
 - `RepositoryModule` — enlaza `PdfHistoryRepositoryImpl` a `PdfHistoryRepository`

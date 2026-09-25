@@ -1,4 +1,4 @@
-pdffoto/
+pdfoto/
 ├── AGENTS.md
 ├── README.md
 ├── PRIVACY.md

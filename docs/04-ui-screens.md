@@ -2,7 +2,7 @@
 
 ## Navegación
 
-Implementada con **Navigation Compose** en `com.pdffoto.ui.navigation`
+Implementada con **Navigation Compose** en `com.pdfoto.ui.navigation`
 (`Destination` + `PdfotoNavHost`). El tema y el grafo se montan en `PdfotoRoot`.
 
 | Ruta | Pantalla | Estado |

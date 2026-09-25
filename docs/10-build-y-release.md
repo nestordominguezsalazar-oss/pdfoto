@@ -33,7 +33,7 @@ Play (el `versionCode` debe ser mayor que el de la versión publicada).
 
 - **targetSdk 36** obligatorio para apps nuevas y actualizaciones desde el **31-08-2026** (Android 16).
 - `compileSdk 36` requiere **AGP 8.11+** y **Gradle 8.13+**; `minSdk 24` se mantiene.
-- Paquete: `com.pdffoto` (permanente una vez publicado). No hace falta poseer un dominio.
+- Paquete: `com.pdfoto` (permanente una vez publicado). No hace falta poseer un dominio.
 - Verificación de desarrollador: registrar el package name antes del **30-09-2026**.
 - Firma con **Play App Signing**; la clave de subida se configura desde `keystore.properties` (ver `keystore.properties.example`).
 - Antes de publicar: política de privacidad (enlace en Play Console y dentro de la app), formulario de **Data safety** ("no recopila datos"), icono 512×512, gráfico 1024×500 y capturas.

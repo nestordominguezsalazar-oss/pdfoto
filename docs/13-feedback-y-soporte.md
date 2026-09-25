@@ -13,7 +13,7 @@ tiene permiso de `INTERNET` ni analytics/tracking.
 - Botón **"Enviar comentarios"** en Inicio → abre el cliente de correo prerellenado con:
   - **diagnósticos** técnicos (versión de la app, versión de Android y dispositivo; sin datos
     personales), construidos por `domain/support/buildFeedbackDiagnostics`;
-  - **adjunto**: el **log local** (`cacheDir/logs/pdffoto.log`), compartido vía FileProvider.
+  - **adjunto**: el **log local** (`cacheDir/logs/pdfoto.log`), compartido vía FileProvider.
 - **Nada se envía automáticamente**: lo manda el usuario con su app de correo. La app no abre
   ninguna conexión de red.
 

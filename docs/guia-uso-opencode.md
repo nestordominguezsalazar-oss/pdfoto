@@ -7,7 +7,7 @@ Una vez tengas estos archivos en tu repo:
 
 ```bash
 # 1. Inicializar proyecto Android base (o dejar que opencode lo haga)
-mkdir pdffoto && cd pdffoto
+mkdir pdfoto && cd pdfoto
 git init
 # ... crea README.md y docs/ con el contenido de arriba
 

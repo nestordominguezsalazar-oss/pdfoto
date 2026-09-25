@@ -143,7 +143,7 @@ build(release): configurar firma y minificado del APK
     └── src/
         ├── main/
         │   ├── AndroidManifest.xml
-        │   ├── java/com/pdffoto/
+        │   ├── java/com/pdfoto/
         │   │   ├── MainActivity.kt
         │   │   ├── PdfotoApp.kt      # Application (@HiltAndroidApp)
         │   │   ├── data/

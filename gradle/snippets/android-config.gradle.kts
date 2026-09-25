@@ -1,9 +1,9 @@
 android {
-    namespace = "com.pdffoto"
+    namespace = "com.pdfoto"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.pdffoto"
+        applicationId = "com.pdfoto"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

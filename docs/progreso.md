@@ -110,7 +110,10 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 
 ## Decisiones tomadas
 
-- **Nombre**: PDFoto · **applicationId**: `com.pdffoto` (permanente al publicar)
+- **Nombre**: PDFoto · **applicationId**: `com.pdfoto` (permanente al publicar)
+- **Nomenclatura**: la marca visible es **PDFoto** (una F, fusión de "PDF" + "foto"); todos
+  los identificadores técnicos usan la misma grafía en minúscula, `pdfoto` (paquete
+  `com.pdfoto`, carpeta/repo, URL de privacidad). Antes convivían `PDFoto` y `pdffoto` (dos F).
 - **API 36**: Google Play la exige para apps nuevas desde 2026-08-31 → obligó a subir AGP a
   8.11+ (el 8.6.1 de los docs iniciales no soporta API 36) y Gradle a 8.13
 - **Dominio puro**: los URI se modelan como `String`, no `android.net.Uri`, para poder testar
@@ -220,7 +223,7 @@ Minors diferidos (no arreglados):
 1. **Política de privacidad** — hecha (`PRIVACY.md` + `privacy.html`); falta **publicarla en
    una URL** (GitHub Pages) y pegar el enlace en Play Console. El enlace **dentro de la app**
    ya existe (botón "Privacidad" en Inicio) y `privacy_policy_url` ya apunta a
-   `https://nestordominguezsalazar.github.io/pdffoto/privacy.html`; falta que esa URL esté
+   `https://nestordominguezsalazar.github.io/pdfoto/privacy.html`; falta que esa URL esté
    publicada.
 2. **Data safety** — declarar "no recopila datos".
 3. **Firma de release** con Play App Signing (`keystore.properties`).

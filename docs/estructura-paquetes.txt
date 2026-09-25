@@ -1,4 +1,4 @@
-app/src/main/java/com/pdffoto/
+app/src/main/java/com/pdfoto/
 ├── MainActivity.kt
 ├── PdfotoApp.kt                 # Application (@HiltAndroidApp)
 ├── data/
