@@ -138,8 +138,8 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 | `./gradlew lintDebug` | ✅ 0 errores (28 avisos, todos "hay versión más nueva") |
 | `./gradlew bundleRelease` | ✅ `app-release.aab` ≈ 4.7 MB (firma verificada) |
 
-Tests instrumentados (`androidTest`) escritos y compilados (`assembleDebugAndroidTest`); para
-**ejecutarlos** hace falta un dispositivo o emulador (`connectedDebugAndroidTest`) — ver `docs/09`.
+Tests instrumentados (`androidTest`): **7/7 en verde** en dispositivo real (SM-S938B, Android 16 /
+API 36) con `./gradlew connectedDebugAndroidTest` — ver `docs/09`.
 
 ### Cómo reproducirlo en local
 

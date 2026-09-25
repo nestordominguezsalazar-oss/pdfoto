@@ -91,17 +91,24 @@ class PdfGeneratorInstrumentedTest {
     @Test
     fun omiteLasFotosQueNoDecodifican() = runBlocking {
         val valida = crearFoto(context, "pdfoto_valida.png", Color.RED, order = 0)
-        val rota = Photo(id = "rota", uri = "file:///no/existe/pdfoto.png", order = 1)
-        val salida = File(context.cacheDir, "pdfoto_con_rota.pdf")
+        val archivoInvalido = File(context.cacheDir, "pdfoto_invalida.png").apply {
+            writeText("esto no es una imagen")
+        }
+        val invalida = Photo(
+            id = "invalida",
+            uri = Uri.fromFile(archivoInvalido).toString(),
+            order = 1,
+        )
+        val salida = File(context.cacheDir, "pdfoto_con_invalida.pdf")
 
         val resultado = PdfGenerator(context).generate(
-            photos = listOf(valida, rota),
+            photos = listOf(valida, invalida),
             config = PdfConfig(),
             outputFile = salida,
             onProgress = { _, _ -> },
         )
 
-        // La foto que no decodifica se omite; solo la válida produce página.
+        // La foto que existe pero no decodifica se omite; solo la válida produce página.
         assertThat(resultado.isSuccess).isTrue()
         assertThat(contarPaginas(salida)).isEqualTo(1)
     }

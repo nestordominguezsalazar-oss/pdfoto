@@ -21,8 +21,8 @@
 - `HistoryViewModelTest`: `Empty` / `Content` / eliminar.
 
 ## Instrumentados (Android) — `app/src/androidTest`
-Escritos y compilados (`./gradlew assembleDebugAndroidTest`). Para ejecutarlos hace falta un
-dispositivo o emulador: `./gradlew connectedDebugAndroidTest`.
+**Ejecutados en un dispositivo real** (Samsung SM-S938B, Android 16 / API 36): **7/7 en verde**
+con `./gradlew connectedDebugAndroidTest`. También compilan solos con `assembleDebugAndroidTest`.
 
 - `PdfGeneratorInstrumentedTest`: genera un PDF real desde imágenes sintéticas y lo reabre con
   `PdfRenderer` (nº de páginas, tamaño A4 en vertical, progreso 1-based y foto ilegible omitida).

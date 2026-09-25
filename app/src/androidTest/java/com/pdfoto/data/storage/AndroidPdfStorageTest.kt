@@ -40,5 +40,6 @@ class AndroidPdfStorageTest {
 
         // Limpieza: en API 29+ la fila de MediaStore queda en Downloads del emulador/dispositivo.
         runCatching { context.contentResolver.delete(uri, null, null) }
+        Unit
     }
 }
