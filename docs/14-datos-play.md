@@ -226,6 +226,11 @@ conservas la de subida).
 
 ## 9. Checklist rápido (marcar al subir)
 
+> **Aviso de "símbolos de depuración nativos"**: Play puede avisar de que el App Bundle
+> contiene código nativo y no se subieron símbolos. Es una **recomendación**, no un requisito.
+> En PDFoto todo el código nativo son librerías de terceros (CameraX, Compose) que ya vienen
+> *stripped* sin símbolos, así que **no hay nada que subir**: se puede ignorar y publicar.
+
 - [ ] App creada (`PDFoto`, `com.pdfoto`, gratis, no juego).
 - [ ] Descripción corta (es/en) pegada.
 - [ ] Descripción completa (es/en) pegada.

@@ -47,6 +47,12 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
+            ndk {
+                // Si hubiera codigo nativo propio, extrae simbolos para subirlos a Play.
+                // Hoy todo el codigo nativo es de terceros (CameraX/Compose) y viene sin
+                // simbolos, asi que no se genera zip.
+                debugSymbolLevel = "FULL"
+            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
