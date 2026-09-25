@@ -34,9 +34,12 @@ con `./gradlew connectedDebugAndroidTest`. También compilan solos con `assemble
 
 ## CI (`.github/workflows/android-ci.yml`)
 Dos trabajos en cada `push` / `pull_request`:
-- **build**: `testDebugUnitTest` + `lintDebug` + `assembleDebug`.
-- **instrumented**: emulador API 36 (`reactivecircus/android-emulator-runner`) que ejecuta
-  `connectedDebugAndroidTest` y sube los informes como artefacto.
+- **build** (bloqueante): `testDebugUnitTest` + `lintDebug` + `assembleDebug`.
+- **instrumented** (*best-effort*): emulador **API 30** (`reactivecircus/android-emulator-runner`)
+  que ejecuta `connectedDebugAndroidTest` (**8/8**) y sube los informes como artefacto. Va con
+  `continue-on-error` porque el emulador de los runners gratuitos no siempre es estable (el de
+  API 36 no arranca de forma fiable); la verificación de referencia es el **dispositivo real**
+  (API 36).
 
 ## Pendiente
 - **UI**: ampliar los smoke tests a interacciones (no solo render).

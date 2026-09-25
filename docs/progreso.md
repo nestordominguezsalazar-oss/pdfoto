@@ -33,8 +33,9 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 - Gradle 8.13 + **AGP 8.11.1** + Kotlin 2.0.20, `compileSdk`/`targetSdk` **36**, `minSdk` 24
 - Catálogo de versiones en `gradle/libs.versions.toml`; wrapper oficial incluido (`./gradlew`)
 - KSP + **Hilt** (DI) y **Room** (persistencia)
-- CI en `.github/workflows/android-ci.yml`: job **build** (unit tests + lint + APK) y job
-  **instrumented** (emulador API 36 + `connectedDebugAndroidTest`)
+- CI en `.github/workflows/android-ci.yml`: job **build** (unit tests + lint + APK, bloqueante)
+  y job **instrumented** *best-effort* (emulador API 30 + `connectedDebugAndroidTest`, 8/8;
+  no bloquea por la inestabilidad del emulador en runners gratuitos)
 - Repositorio **git** inicializado (`main`), con historial de commits
 
 ### UI
