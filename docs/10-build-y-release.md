@@ -13,7 +13,7 @@ composeBom = "2024.09.02"
 hilt = "2.52"
 room = "2.6.1"
 coil = "2.7.0"
-camerax = "1.3.4"
+camerax = "1.4.2"
 navigation = "2.8.0"
 
 [libraries]

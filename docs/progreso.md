@@ -1,6 +1,6 @@
 # Progreso del proyecto
 
-Última actualización: **2026-09-24**
+Última actualización: **2026-09-25**
 
 Este documento resume qué está hecho, qué decisiones se tomaron y qué falta.
 El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
@@ -226,6 +226,13 @@ Minors diferidos (no arreglados):
 - Estado de `privacy_policy_url` corregido en `docs/11` (ya apunta a la URL de GitHub Pages).
 - `docs/02-arquitectura` desarrollado (capas + enlace al bis) y EXIF añadido a la tabla de
   librerías de `docs/02-arquitectura-convenciones`.
+
+### 2026-09-25
+- **La app no soportaba páginas de 16 KB.** Android 16 avisaba ("Esta app no es compatible con
+  16 KB") por `libimage_processing_util_jni.so`, compilado con alineación de 4 KB (CameraX
+  1.3.4). Se sube **CameraX a 1.4.2**, cuyas libs nativas ya van alineadas a 16 KB
+  (`LOAD p_align = 0x4000`); verificado en APK debug y AAB release. Google Play lo exige para
+  apps que apuntan a Android 15+.
 
 ## Pendiente para publicar en Google Play
 

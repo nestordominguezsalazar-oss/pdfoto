@@ -13,7 +13,7 @@
 | Navegación | Navigation Compose 2.8.0 |
 | Imágenes | Coil 2.7.0 |
 | Persistencia | Room 2.6.1 |
-| Cámara | CameraX 1.3.4 |
+| Cámara | CameraX 1.4.2 |
 | Reordenar | sh.calvin.reorderable 2.4.0 |
 | EXIF | androidx.exifinterface 1.3.7 |
 

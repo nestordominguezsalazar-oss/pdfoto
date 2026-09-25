@@ -43,6 +43,23 @@ jobs:
           chmod +x ./gradlew
           ./gradlew testDebugUnitTest lintDebug assembleDebug --stacktrace
 
+      - name: Comprobar alineación 16 KB de las libs nativas
+        run: |
+          set -eu
+          APK=app/build/outputs/apk/debug/app-debug.apk
+          tmp=$(mktemp -d)
+          unzip -o -q "$APK" 'lib/*/*.so' -d "$tmp"
+          bad=0
+          while read -r so; do
+            aligns=$(readelf -lW "$so" | awk '$1=="LOAD"{print $NF}' | sort -u | tr '\n' ' ')
+            echo "$(basename "$(dirname "$so")")/$(basename "$so"): $aligns"
+            case "$aligns" in *0x1000*) bad=1;; esac
+          done < <(find "$tmp/lib" -name '*.so' | sort)
+          if [ "$bad" -ne 0 ]; then
+            echo "ERROR: hay librerias nativas sin alinear a 16 KB"; exit 1
+          fi
+          echo "OK: todas las libs nativas alineadas a 16 KB"
+
   # Tests instrumentados en emulador. Es "best-effort": el emulador de los runners
   # gratuitos puede ser lento/inestable, asi que no bloquea el pipeline. La verificacion
   # de referencia se hace en un dispositivo real con `connectedDebugAndroidTest`.

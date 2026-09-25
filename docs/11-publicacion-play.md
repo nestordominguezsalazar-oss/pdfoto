@@ -8,6 +8,8 @@ cumplidos; lo que falta son trámites y recursos de ficha.
 - [x] `targetSdk 36` (Android 16) — obligatorio para apps nuevas desde 2026-08-31.
 - [x] `minSdk 24`, sin permisos de almacenamiento, permiso `CAMERA` solo al usarlo.
 - [x] Sin publicidad, analytics ni tracking.
+- [x] **Soporte de páginas de 16 KB** (obligatorio para targetSdk 15+ desde 2025-11-01):
+      CameraX 1.4.2 trae las libs nativas alineadas (`p_align = 0x4000`).
 - [x] Release firmable con `./gradlew bundleRelease` (R8 + reducción de recursos).
 
 ## 1. Cuenta y verificación
