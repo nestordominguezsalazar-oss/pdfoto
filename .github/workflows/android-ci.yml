@@ -72,14 +72,19 @@ jobs:
             ~/.gradle/wrapper
           key: gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', 'gradle/libs.versions.toml') }}
 
+      - name: Precompilar APKs (antes de arrancar el emulador)
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug assembleDebugAndroidTest --stacktrace
+
       - name: Tests instrumentados en emulador
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 36
-          target: default
+          target: aosp_atd
           arch: x86_64
           disable-animations: true
-          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect -memory 2048
           script: |
             chmod +x ./gradlew
             ./gradlew connectedDebugAndroidTest --stacktrace
