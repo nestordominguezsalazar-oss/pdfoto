@@ -11,7 +11,7 @@
 | RF6  | Configurar tamaño de página (A4, Carta, Auto)          | Media     |
 | RF7  | Configurar orientación (Retrato, Paisaje, Auto)        | Media     |
 | RF8  | Configurar márgenes (Ninguno, Pequeño, Grande)         | Baja      |
-| RF9  | Ajustar calidad JPEG (Baja, Media, Alta)               | Media     |
+| RF9  | Ajustar calidad (DPI: Baja, Media, Alta)               | Media     |
 | RF10 | Vista previa del PDF antes de generar                  | Baja      |
 | RF11 | Guardar en carpeta Downloads                           | Alta      |
 | RF12 | Compartir PDF vía Intent                               | Alta      |

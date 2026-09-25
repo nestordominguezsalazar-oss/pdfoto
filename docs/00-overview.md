@@ -3,7 +3,7 @@
 ## Objetivo
 App Android que permite al usuario:
 1. Seleccionar fotos desde galería O tomarlas con la cámara
-2. Reordenarlas, rotarlas y recortarlas
+2. Reordenarlas y rotarlas
 3. Generar un PDF configurable (tamaño de página, márgenes, calidad)
 4. Guardarlo en el dispositivo o compartirlo
 
@@ -19,6 +19,7 @@ Sin publicidad ni trackers: la app funciona 100 % offline.
 - **Sin marca de agua**: el PDF generado es 100 % del usuario
 
 ## Fuera de alcance (v2+)
+- Recorte de imágenes
 - OCR
 - Escaneo con detección de bordes
 - Firma digital

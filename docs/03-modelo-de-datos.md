@@ -56,5 +56,9 @@ Módulos de Hilt en `com.pdffoto.di`:
 
 - `DatabaseModule` — provee `PdfotoDatabase` y `PdfHistoryDao`
 - `RepositoryModule` — enlaza `PdfHistoryRepositoryImpl` a `PdfHistoryRepository`
+- `PdfGeneratorModule` — enlaza `PdfGenerator` a `PdfGeneratorService`
+- `PdfModule` — provee `PdfOutputFileProvider` (escribe en `cacheDir`)
+- `StorageModule` — enlaza `AndroidPdfStorage` a `PdfStorage`
+- `LoggingModule` — provee `LogFileProvider` (log local en `cacheDir/logs`)
 
 `PdfotoApp` está anotada con `@HiltAndroidApp` y `MainActivity` con `@AndroidEntryPoint`.

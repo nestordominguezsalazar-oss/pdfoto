@@ -55,7 +55,7 @@ CONFIGURABLE
 • Tamaño de página: A4, Carta o ajustar a la imagen
 • Orientación: vertical, horizontal o automática
 • Márgenes: ninguno, pequeño o grande
-• Calidad JPEG: baja, media o alta
+• Calidad (resolución): baja, media o alta
 
 PRIVADO POR DISEÑO
 • Sin publicidad, sin analítica y sin rastreadores
@@ -93,7 +93,7 @@ CONFIGURABLE
 • Page size: A4, Letter or fit to image
 • Orientation: portrait, landscape or auto
 • Margins: none, small or large
-• JPEG quality: low, medium or high
+• Quality (resolution): low, medium or high
 
 PRIVATE BY DESIGN
 • No ads, no analytics and no trackers

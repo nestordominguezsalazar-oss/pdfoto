@@ -15,6 +15,7 @@
 | Persistencia | Room 2.6.1 |
 | Cámara | CameraX 1.3.4 |
 | Reordenar | sh.calvin.reorderable 2.4.0 |
+| EXIF | androidx.exifinterface 1.3.7 |
 
 ## Convenciones
 - PascalCase para clases, camelCase para funciones.

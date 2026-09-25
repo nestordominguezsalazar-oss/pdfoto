@@ -21,7 +21,7 @@ tiene permiso de `INTERNET` ni analytics/tracking.
 - Leer y **responder reseñas** en Play Console.
 - Correo de soporte en la ficha: `nestordominguezsalazar@gmail.com`.
 
-## 5. Log local (implementado)
+## 4. Log local (implementado)
 - `data/logging`: `AppLogger` + `FileLogger` (bucle de 500 líneas, en `cacheDir`, sin red).
 - Registra: cierres no controlados (`PdfotoApp`), errores de **generación/guardado** y de
   **captura** de cámara.

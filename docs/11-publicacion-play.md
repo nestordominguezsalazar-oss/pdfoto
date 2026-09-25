@@ -30,8 +30,9 @@ Play exige un enlace a la política **en la ficha** y **dentro de la app**.
   3. La URL queda como `https://<usuario>.github.io/pdffoto/privacy.html`.
 - [ ] Pegar la URL en Play Console (*Política de privacidad*).
 - [x] Enlace **dentro de la app**: botón "Privacidad" en la pantalla de inicio.
-      ⚠️ Actualiza `privacy_policy_url` en `app/src/main/res/values/strings.xml` con la URL
-      definitiva antes de publicar.
+      `privacy_policy_url` (`app/src/main/res/values/strings.xml`) ya apunta a
+      `https://nestordominguezsalazar.github.io/pdffoto/privacy.html`.
+- [ ] Verificar que esa URL está **publicada y accesible** (ver el paso 2.1 anterior).
 
 ## 3. Data safety (formulario obligatorio)
 

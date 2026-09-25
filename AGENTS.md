@@ -85,7 +85,7 @@ Ejemplos:
 ```
 feat(pdf): generar PDF en tamaño A4 con margen configurable
 fix(permisos): solicitar CAMERA solo al abrir la cámara
-test(pdf): cubrir CalculateInSampleSize con bitmaps grandes
+test(pdf): cubrir calculateInSampleSize con bitmaps grandes
 build(release): configurar firma y minificado del APK
 ```
 

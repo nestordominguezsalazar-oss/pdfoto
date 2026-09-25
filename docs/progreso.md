@@ -81,7 +81,8 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 - `domain/repository/PdfHistoryRepository`
 - `data/local`: `PdfHistoryEntity`, `PdfHistoryDao`, `PdfotoDatabase`, mapper
 - `data/repository/PdfHistoryRepositoryImpl`
-- `di/`: `DatabaseModule`, `RepositoryModule`, `PdfModule`, `PdfGeneratorModule`, `StorageModule`
+- `di/`: `DatabaseModule`, `RepositoryModule`, `PdfModule`, `PdfGeneratorModule`,
+  `StorageModule`, `LoggingModule`
 
 ### Cámara (CameraX)
 - `CameraScreen` con vista previa y captura a `cacheDir`; el permiso `CAMERA` se pide **solo
@@ -204,11 +205,23 @@ Minors diferidos (no arreglados):
   (`androidx.exifinterface`) y se endereza el bitmap, combinándola con la rotación del
   usuario. Función pura `exifOrientationToTransform` (`domain/photo`) + tests.
 
+### Revisión de congruencia de la documentación (2026-09-24)
+- Conteo de tests actualizado (54 → **59**) y añadidos los que faltaban en `docs/09`
+  (`CameraViewModelTest`, `FileLoggerTest`, `FeedbackDiagnosticsTest`).
+- "Calidad JPEG" → **calidad en DPI** en `docs/01` (RF9) y en los textos de ficha (`docs/12`).
+- "Recortar" quitado de los objetivos de `docs/00` y añadido a *Fuera de alcance (v2+)*.
+- Lista de módulos de Hilt completada en `docs/03` (incluye `LoggingModule`).
+- Estado de `privacy_policy_url` corregido en `docs/11` (ya apunta a la URL de GitHub Pages).
+- `docs/02-arquitectura` desarrollado (capas + enlace al bis) y EXIF añadido a la tabla de
+  librerías de `docs/02-arquitectura-convenciones`.
+
 ## Pendiente para publicar en Google Play
 
 1. **Política de privacidad** — hecha (`PRIVACY.md` + `privacy.html`); falta **publicarla en
    una URL** (GitHub Pages) y pegar el enlace en Play Console. El enlace **dentro de la app**
-   ya existe (botón "Privacidad" en Inicio); actualizar `privacy_policy_url` con la URL final.
+   ya existe (botón "Privacidad" en Inicio) y `privacy_policy_url` ya apunta a
+   `https://nestordominguezsalazar.github.io/pdffoto/privacy.html`; falta que esa URL esté
+   publicada.
 2. **Data safety** — declarar "no recopila datos".
 3. **Firma de release** con Play App Signing (`keystore.properties`).
 4. Recursos de ficha: icono 512×512, gráfico 1024×500, capturas (textos en `docs/12`).

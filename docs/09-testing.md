@@ -1,7 +1,7 @@
 # 09 - Testing
 
 ## Estado actual
-**54 tests unitarios (JVM)** en `app/src/test`. Se ejecutan con `./gradlew testDebugUnitTest`.
+**59 tests unitarios (JVM)** en `app/src/test`. Se ejecutan con `./gradlew testDebugUnitTest`.
 
 ### Dominio y utilidades puras
 - `PdfConfigResolverTest`: tamaños A4/Carta/AUTO, orientación y `targetDecodeDimension` (DPI).
@@ -10,10 +10,12 @@
 - `DefaultFileNameTest`, `FileSizeFormatterTest`, `DateFormatterTest`.
 - `PhotoSelectionTest` (`buildPhotos`), `PhotoEditsTest` (rotar / eliminar / mover).
 - `ExifOrientationTest` (mapeo de la orientación EXIF).
+- `FeedbackDiagnosticsTest` (diagnósticos de soporte).
 
 ### Datos y ViewModels
 - `PdfHistoryMapperTest` (entity ⇄ dominio).
-- `EditorViewModelTest`, `HomeViewModelTest`, `ConfigViewModelTest`.
+- `FileLoggerTest` (bucle del log local en `cacheDir`).
+- `EditorViewModelTest`, `HomeViewModelTest`, `ConfigViewModelTest`, `CameraViewModelTest`.
 - `GenerationViewModelTest`: éxito, error de generación, error de guardado y cancelación, con
   dobles en memoria (`FakePdfGeneratorService`, `FakePdfStorage`, `FakePdfHistoryRepository`).
 - `HistoryViewModelTest`: `Empty` / `Content` / eliminar.
