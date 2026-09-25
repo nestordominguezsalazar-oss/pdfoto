@@ -86,16 +86,7 @@ jobs:
           disable-animations: true
           emulator-boot-timeout: 900
           emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect -memory 2048
-          script: |
-            chmod +x ./gradlew
-            ADB="${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}/platform-tools/adb"
-            "$ADB" logcat -c || true
-            ./gradlew connectedDebugAndroidTest --stacktrace || {
-              echo "=== LOGCAT (últimas 400 líneas) ==="
-              "$ADB" logcat -d -v time | tail -400
-              "$ADB" logcat -d -v time > logcat.txt || true
-              exit 1
-            }
+          script: chmod +x ./gradlew && ./gradlew connectedDebugAndroidTest --stacktrace; code=$?; if [ $code -ne 0 ]; then "$ANDROID_SDK_ROOT/platform-tools/adb" logcat -d -v time | tail -300; fi; exit $code
 
       - name: Subir informes de tests
         if: always()
