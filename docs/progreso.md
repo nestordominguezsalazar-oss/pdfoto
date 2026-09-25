@@ -229,11 +229,9 @@ Minors diferidos (no arreglados):
 
 ## Pendiente para publicar en Google Play
 
-1. **Política de privacidad** — hecha (`PRIVACY.md` + `privacy.html`); falta **publicarla en
-   una URL** (GitHub Pages) y pegar el enlace en Play Console. El enlace **dentro de la app**
-   ya existe (botón "Privacidad" en Inicio) y `privacy_policy_url` ya apunta a
-   `https://nestordominguezsalazar-oss.github.io/pdfoto/privacy.html`; falta que esa URL esté
-   publicada.
+1. **Política de privacidad** — hecha (`PRIVACY.md` + `privacy.html`) y **publicada** en GitHub
+   Pages (`https://nestordominguezsalazar-oss.github.io/pdfoto/privacy.html`, HTTP 200); el
+   enlace dentro de la app ya apunta ahí. Falta **pegar la URL en Play Console**.
 2. **Data safety** — declarar "no recopila datos".
 3. **Firma de release** con Play App Signing (`keystore.properties`).
 4. Recursos de ficha: icono 512×512, gráfico 1024×500, capturas (textos en `docs/12`).
