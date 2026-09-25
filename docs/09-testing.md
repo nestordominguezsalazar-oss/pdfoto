@@ -20,14 +20,25 @@
   dobles en memoria (`FakePdfGeneratorService`, `FakePdfStorage`, `FakePdfHistoryRepository`).
 - `HistoryViewModelTest`: `Empty` / `Content` / eliminar.
 
-## Pendiente (requiere emulador o dispositivo)
-- **Instrumentados (Android)**: `PdfGenerator` de extremo a extremo (generar y verificar con
-  `PdfRenderer`) y `AndroidPdfStorage` (MediaStore / FileProvider).
-- **UI (Compose)**: smoke tests de Editor y Config con `createAndroidComposeRule`.
+## Instrumentados (Android) — `app/src/androidTest`
+Escritos y compilados (`./gradlew assembleDebugAndroidTest`). Para ejecutarlos hace falta un
+dispositivo o emulador: `./gradlew connectedDebugAndroidTest`.
+
+- `PdfGeneratorInstrumentedTest`: genera un PDF real desde imágenes sintéticas y lo reabre con
+  `PdfRenderer` (nº de páginas, tamaño A4 en vertical, progreso 1-based y foto ilegible omitida).
+- `AndroidPdfStorageTest`: ejercita la ruta real de guardado (MediaStore en API 29+ o
+  FileProvider por debajo) y vuelve a leer el PDF.
+- `EditorScreenSmokeTest` y `ConfigScreenSmokeTest`: la pantalla se renderiza y su acción
+  principal está presente (`createComposeRule`).
+
+## Pendiente
+- **CI**: ejecutar los instrumentados en un emulador (el workflow actual solo corre unit tests).
+- **UI**: ampliar los smoke tests a interacciones (no solo render).
 
 ## Herramientas
-- JUnit 4 + Truth
+- JUnit 4 + Truth (unitarios e instrumentados)
 - `kotlinx-coroutines-test` (ViewModels)
+- `androidx.test` + Compose UI Test (`createComposeRule`) en instrumentados
 - Turbine y MockK están declarados en el catálogo, aún sin uso.
 
 ## Cobertura objetivo

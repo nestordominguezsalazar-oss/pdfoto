@@ -138,6 +138,9 @@ El plan paso a paso vive en [`AGENTS.md`](../AGENTS.md).
 | `./gradlew lintDebug` | ✅ 0 errores (28 avisos, todos "hay versión más nueva") |
 | `./gradlew bundleRelease` | ✅ `app-release.aab` ≈ 4.7 MB (firma verificada) |
 
+Tests instrumentados (`androidTest`) escritos y compilados (`assembleDebugAndroidTest`); para
+**ejecutarlos** hace falta un dispositivo o emulador (`connectedDebugAndroidTest`) — ver `docs/09`.
+
 ### Cómo reproducirlo en local
 
 Con **Android Studio** (Ladybug o superior, JDK 17) basta con abrir el proyecto. Por CLI:
