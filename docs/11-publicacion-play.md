@@ -56,9 +56,10 @@ Play exige un enlace a la política **en la ficha** y **dentro de la app**.
 
 - [x] **Icono** 512×512 PNG generado en [`store/icon-512.png`](./store/icon-512.png)
       (fuente en `docs/art/`).
-- [ ] **Gráfico destacado** 1024×500 PNG/JPG.
-- [ ] **Capturas de teléfono** (mín. 2; recomendado 4-8) — se pueden hacer con un
-      emulador de Android Studio.
+- [x] **Gráfico destacado** 1024×500 en [`store/feature-graphic-1024x500.png`](./store/feature-graphic-1024x500.png).
+- [x] **Capturas de teléfono** (6, en [`store/capturas/`](./store/capturas/)): 1080×1920 (9:16),
+      PNG 24-bit sin alfa (cumple 320–3840 px y lado mayor ≤ 2× el menor). Capturadas en un
+      dispositivo real (SM-S938B) con imágenes de ejemplo neutras.
 - [ ] **Nombre** ≤ 30 caracteres: `PDFoto`.
 - [ ] **Descripción corta** ≤ 80 caracteres.
 - [ ] **Descripción completa** ≤ 4000 caracteres (mencionar: sin publicidad, offline,

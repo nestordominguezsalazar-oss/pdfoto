@@ -234,7 +234,8 @@ Minors diferidos (no arreglados):
    enlace dentro de la app ya apunta ahí. Falta **pegar la URL en Play Console**.
 2. **Data safety** — declarar "no recopila datos".
 3. **Firma de release** con Play App Signing (`keystore.properties`).
-4. Recursos de ficha: icono 512×512, gráfico 1024×500, capturas (textos en `docs/12`).
+4. Recursos de ficha: icono 512×512 ✅, gráfico 1024×500 ✅ y 6 capturas 1080×1920 ✅
+   (`docs/store/`); textos en `docs/12`.
 5. Clasificación de contenido y público objetivo.
 6. **Registro del package name** (verificación de desarrollador). Las apps nuevas de Play se
    auto-registran al crearlas en Play Console.
