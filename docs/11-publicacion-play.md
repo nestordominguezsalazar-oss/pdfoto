@@ -76,12 +76,17 @@ Play exige un enlace a la política **en la ficha** y **dentro de la app**.
 
 ## 7. Pruebas antes de producción
 
-- [ ] Subir el AAB a la pista de **prueba interna** e instalar desde Play.
+- [ ] Subir el AAB a la pista de **prueba interna** e instalar desde Play. Enlace de la pista:
+      `https://play.google.com/apps/testing/com.pdfoto` → hay que **aceptar la invitación** con
+      la cuenta de tester. No confundirlo con el enlace de **compartir aplicaciones de forma
+      interna** (`.../apps/internaltest/<id>`), que es otra función. Ver
+      [`15-prueba-cerrada.md`](./15-prueba-cerrada.md).
 - [ ] Probar: galería, cámara, rotar/borrar/reordenar, configuración, generar, **abrir** y
       **compartir**, historial y borrado.
-- [ ] Si la cuenta es personal y nueva, Play exige **prueba cerrada con varios testers
-      durante 14 días** antes de habilitar producción (revisa el requisito vigente en tu
-      cuenta).
+- [ ] Si la cuenta es **personal y creada después del 13/11/2023**, Play exige **prueba cerrada
+      con 12 testers opt-in continuos durante 14 días** antes de habilitar producción (la prueba
+      interna **no** cuenta). Pasos y formulario de acceso a producción en
+      [`15-prueba-cerrada.md`](./15-prueba-cerrada.md).
 
 ## 8. Publicación
 

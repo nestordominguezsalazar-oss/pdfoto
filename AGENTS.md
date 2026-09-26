@@ -27,6 +27,7 @@ Antes de escribir código, lee los documentos de [`docs/`](./docs) en orden num�
 | [12-textos-ficha-play](./docs/12-textos-ficha-play.md) | Textos de la ficha (es/en) |
 | [13-feedback-y-soporte](./docs/13-feedback-y-soporte.md) | Errores y comentarios de usuarios |
 | [14-datos-play](./docs/14-datos-play.md) | Datos y textos listos para Play Console |
+| [15-prueba-cerrada](./docs/15-prueba-cerrada.md) | Prueba cerrada (12 testers / 14 días), acceso a producción y privacidad del desarrollador |
 
 Estado actual del desarrollo: [`docs/progreso.md`](./docs/progreso.md).
 

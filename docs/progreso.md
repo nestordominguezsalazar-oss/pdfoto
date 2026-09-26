@@ -236,6 +236,21 @@ Minors diferidos (no arreglados):
 - **Datos para la ficha de Play** reunidos en [`docs/14-datos-play.md`](./14-datos-play.md)
   (textos, gráficos, Data safety, clasificación, público y firma).
 
+## Publicación (2026-09-25)
+
+- **Prueba interna operativa.** La pista de prueba interna de Play está publicada y la app se
+  instaló en un dispositivo real. El enlace correcto de la pista es
+  `https://play.google.com/apps/testing/com.pdfoto` y exige **aceptar la invitación** con la
+  cuenta de tester. El enlace `.../apps/internaltest/<id>` corresponde a *compartir
+  aplicaciones de forma interna*, una función distinta. Ver
+  [`15-prueba-cerrada.md`](./15-prueba-cerrada.md).
+- **Privacidad del desarrollador.** Google publica en la ficha los "Datos de contacto de la
+  ficha de Play Store" (correo, teléfono y web). El teléfono es **público** y lo ven los
+  testers → dejar solo el correo (*Play Console → Configuración de la tienda*). Detalle en
+  [`15-prueba-cerrada.md`](./15-prueba-cerrada.md).
+- **Pendiente:** prueba cerrada con **12 testers opt-in 14 días continuos** para desbloquear
+  producción (cuenta personal nueva).
+
 ## Pendiente para publicar en Google Play
 
 1. **Política de privacidad** — hecha (`PRIVACY.md` + `privacy.html`) y **publicada** en GitHub
@@ -248,6 +263,8 @@ Minors diferidos (no arreglados):
 5. Clasificación de contenido y público objetivo.
 6. **Registro del package name** (verificación de desarrollador). Las apps nuevas de Play se
    auto-registran al crearlas en Play Console.
+7. **Prueba cerrada** (12 testers / 14 días continuos) y **solicitud de acceso a producción**;
+   ver [`15-prueba-cerrada.md`](./15-prueba-cerrada.md).
 
 ## Notas de entorno
 
